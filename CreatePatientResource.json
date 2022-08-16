@@ -1,0 +1,107 @@
+ {
+    "resourceType": "Patient",
+    "identifier": [
+        {
+            "use": "usual",
+            "type": {
+                "coding": [
+                    {
+                        "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                        "code": "MR"
+                    }
+                ]
+            },
+            "value": "1945994"
+        },
+        {
+            "use": "usual",
+            "type": {
+                "coding": [
+                    {
+                        "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                        "code": "SS"
+                    }
+                ]
+            },
+            "value": "000-111-2223"
+        }
+    ],
+    "active": true,
+    "name": [
+        {
+            "family": "RAMOS",
+            "given": [
+                "EUGENE",
+                "MICHAEL"
+            ],
+            "suffix": [
+                "*****"
+            ]
+        }
+    ],
+    "telecom": [
+        {
+            "system": "phone",
+            "value": "*****"
+        },
+        {
+            "system": "other",
+            "value": "*****"
+        },
+        {
+            "system": "email",
+            "value": "*****"
+        }
+    ],
+    "gender": "male",
+    "birthDate": "1959-01-04",
+    "address": [
+        {
+            "use": "home",
+            "line": "222 E BROADWAY ST, 111",
+            "city": "NEW YORK",
+            "state": "NEW YORK",
+            "postalCode": "10019",
+            "district": "NEW YORK",
+            "country": "USA"
+        },
+        {
+            "use": "work",
+            "line": "*****, *****",
+            "city": "*****",
+            "state": "NEW YORK",
+            "postalCode": "*****"
+        }
+    ],
+    "managingOrganization": {
+        "reference": "Organization/131",
+        "display": "WellCare_Medicaid_Office"
+    },
+    "generalPractitioner": [
+        {
+            "reference": "Practioner/",
+            "display": "BONNIE SOUSA"
+        }
+    ],
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "extension": [
+                {
+                    "url": "text",
+                    "valueString": "AFRICAN"
+                }
+            ]
+        }
+    ],
+    "communication": [
+        {
+            "language": {
+                "coding": {
+                    "system": "http://hl7.org/fhir/ValueSet/languages",
+                    "display": "*****"
+                }
+            }
+        }
+    ]
+}

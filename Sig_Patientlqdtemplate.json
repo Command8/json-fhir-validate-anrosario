@@ -1,0 +1,177 @@
+{
+	"resourceType": "Patient",
+	"id": "{{ msg.PatientId | to_json_string | generate_uuid }}",
+	"identifier": [
+  {
+  "use": "usual",
+  "type": {
+  "coding": [
+  {
+  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+  "code": "MR"
+  }
+				  ]
+			  },
+		   
+			  "value": "{{ msg.CENSEOID }}"
+		  },
+  {
+  "use": "usual",
+  "type": {
+  "coding": [
+  {
+  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+  "code": "SS"
+  }
+				  ]
+			  },
+		   
+			  "value": "{{ msg.MEMBER_SSN }}"
+		  }
+	  ],
+	  "active": true,
+	  "name": [
+		  {
+			  "family": "{{ msg.MEMBER_LAST_NAME }}",
+			  "given": [
+				  "{{ msg.MEMBER_FIRST_NAME }}",
+  "{{ msg.MEMBER_MIDDLE_NAME }}"
+			  ],
+			  "suffix": [
+				  "{{ msg.SUFFIX }}"
+			  ],
+  
+		  }
+	  ],
+	  "telecom": [
+		  {
+			  "system": "phone",
+			  "value": "{{msg.MEMBER_TELEPHONE}}",
+			  },
+  {
+			  "system": "other",
+			  "value": "{{msg.MEMBER_CELL}}",
+			  },
+	{
+			  "system": "email",
+			  "value": "{{msg.MEMBER_EMAIL}}",
+			  },
+  
+	  ],
+   "gender":  
+		  {% if msg.MEMBER_GENDER == '1' -%}
+		 "male",
+		  {% elsif msg.MEMBER_GENDER == '2' -%}
+		 "female",
+		  {% elsif msg.MEMBER_GENDER == '3' -%}
+		 "unknown",
+		  {% elsif code -%}
+  .        "other",
+		  {% else %}
+			  "",
+		  {% endif -%}
+	  "birthDate": "{{ msg.MEMBER_DATE_OF_BIRTH  }}",
+	  "deceasedBoolean": "{{msg.DeceasedBoolean}}",
+	 
+	   "address": [
+  
+		  {
+			  "use": "home",
+			  "line": "{{msg.MEMBER_ADDRESS1}}, {{msg.MEMBER_ADDRESS2}}",
+			  "city": "{{msg.MEMBER_CITY}}",
+  "state":"{{msg.MEMBER_STATE}}",
+			  "postalCode": "{{msg.MEMBER_ZIP}}",
+  "district": "{{msg.MEMBER_COUNTY}}",
+  "country": "USA",
+  },
+   {
+			  "use": "work",
+			  "line": "{{msg.MEMBER_MAIL_ADDRESS1}}, {{msg.MEMBER_MAIL_ADDRESS2}}",
+			  "city": "{{msg.MEMBER_MAIL_CITY}}",
+  "state":"{{msg.MEMBER_MAIL_STATE}}",
+			  "postalCode": "{{msg.MEMBER_MAIL_ZIP}}",
+  },
+	  ],  
+  "multipleBirthBoolean": "{{msg.MultipleBirth}}",
+	 "Contact": [ {
+		   {% for p in msg["Contact"] -%}  
+			  "system": "http://hl7.org/fhir/ValueSet/patient-contactrelationship",
+			  "value": "{{ p.relationship }}",
+			  "name":
+				  {
+					  "family": "{{ p.KinName.lastname }}",
+					  "given": [
+						  "{{ p.KinName.firstname }}"
+					  ]
+				  },          
+	   "gender": "{{p.kinGender}}",
+	  "organization": {
+				  "reference": "Organization/{{p.contOrgId}}",
+				  "display": "{{p.organization}}"
+			  },
+			  "period":{
+				  "start": "{{ p.startDate | add_hyphens_date }}",
+				  "end": "{{ p.endDate | add_hyphens_date }}",
+			  },
+		   "telecom": [
+			 
+			  {
+				  "system": "home",
+				  "value": "{{msg.MEMBER_SECONDARY_CONTACT_PHONE}}",
+			  }
+			 
+		  ],
+		   "address":    
+			  {
+				  "use": "{{ p.KinAddress.type}}",
+				  "line": "{{p.KinAddress.Street}}",
+				  "city": "{{p.KinAddress.City}}",
+				  "postalCode": "{{p.KinAddress.ZipCode}}",
+			  },
+		  {% endfor -%}
+	  }],
+   
+	 "managingOrganization": {
+		  "reference": "Organization/{{msg.CLIENTID}}",
+		  "display": "{{msg.CLIENTNAME}}"
+	  },
+	 
+  
+   
+  "generalPractitioner": [
+		 
+		  {
+			  "reference": "Practioner/{{msg.PCP_ID}}",
+			  "display": "{{msg.PCP_FIRSTNAME}} {{msg.PCP_LASTNAME}}"
+			  },
+	  ],
+  "extension":[
+  {
+		 "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+  "extension": [
+  {
+   "url": "text",
+  "valueString":"{{msg.ETHNICITY}}"
+  }
+  ]}
+  
+		 
+	   
+	  ],
+  "communication":[
+		 
+		  {
+			  "language":{
+			  "coding":
+			  {
+					   "system":"http://hl7.org/fhir/ValueSet/languages",
+					  "display":"{{msg.PREFERREDSPOKENLANGUAGE}}",
+  
+			  }
+		  }}
+		 
+	   
+	  ],
+  
+  }
+  
