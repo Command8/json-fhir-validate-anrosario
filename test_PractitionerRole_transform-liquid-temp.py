@@ -22,6 +22,13 @@ trans_pracrole_hcs = '"healthcareService":   {"reference": "healthcareService/{{
 
 trans_pracrole_tel = '"telecom": [{"system": "phone","value": "{{msg.PROVIDER_PHONEPRIMARY}}","use":"work"},{"system": "phone","value": "{{msg.PROVIDER_PHONESECONDARY}}","use":"home"},{"system": "pager","value": "{{msg.PROVIDER_CONTACT}}","use":"mobile"},"system": "fax","value": "{{msg.PROVIDER_FAX}}","use":"work"},],'
 
+trans_pracrole_avail= '"availableTime": [{"daysOfWeek":  ["mon","tue","wed"],"availableStartTime":  "{{ msg.PROVIDER_AVAILABLE_STARTTIME}}","availableEndTime": "{{ msg.PROVIDER_AVAILABLE_ENDTIME}}" ],'
+
+trans_pracrole_ntavail = ' 	"notAvailable": [{"description": "Dr. on vacation","during": {"start": "{{ msg.PROVIDER_SERVICE_NOT_AVAILABLE_FROM}}"}}],"availabilityExceptions": "{{ msg.AVAILABILIY_EXCEPTION}}",'
+
+trans_pracrole_availexcp = '"availabilityExceptions": "{{ msg.AVAILABILIY_EXCEPTION}}",'
+
+
 class TestliqTransform (unittest.TestCase):
     def test_liqpraroleid(self):
         print("resource_type")
@@ -136,13 +143,55 @@ class TestliqTransform (unittest.TestCase):
         #Prints message if the test fails for comparison        
         self.assertEqual("PROVIDER_FAX" in trans_pracrole_tel,True,"PROVIDER_FAX not present in liquid template") 
 
-    def test_liqpracroletel4(self):
+    def test_liqpracroleavlstr(self):
         print("telecom")
-        #Validating key PROVIDER_FAX in liquid template
-        if "PROVIDER_FAX" in trans_pracrole_tel:
-            print("PROVIDER_FAX" in trans_pracrole_tel)
+        #Validating key PROVIDER_AVAILABLE_STARTTIME in liquid template
+        if "PROVIDER_AVAILABLE_STARTTIME" in trans_pracrole_avail:
+            print("PROVIDER_AVAILABLE_STARTTIME" in trans_pracrole_avail)
         #Prints message if the test fails for comparison        
-        self.assertEqual("PROVIDER_FAX" in trans_pracrole_tel,True,"PROVIDER_FAX not present in liquid template") 
+        self.assertEqual("PROVIDER_AVAILABLE_STARTTIME" in trans_pracrole_avail,True,"PROVIDER_AVAILABLE_STARTTIME not present in liquid template") 
+
+    def test_liqpracroleavlstr(self):
+        print("availableTime")
+        #Validating key PROVIDER_AVAILABLE_STARTTIME in liquid template
+        if "PROVIDER_AVAILABLE_STARTTIME" in trans_pracrole_avail:
+            print("PROVIDER_AVAILABLE_STARTTIME" in trans_pracrole_avail)
+        #Prints message if the test fails for comparison        
+        self.assertEqual("PROVIDER_AVAILABLE_STARTTIME" in trans_pracrole_avail,True,"PROVIDER_AVAILABLE_STARTTIME not present in liquid template")
+
+    def test_liqpracroleavlend(self):
+        print("availableTime")
+        #Validating key PROVIDER_AVAILABLE_STARTTIME in liquid template
+        if "PROVIDER_AVAILABLE_ENDTIME" in trans_pracrole_avail:
+            print("PROVIDER_AVAILABLE_ENDTIME" in trans_pracrole_avail)
+        #Prints message if the test fails for comparison        
+        self.assertEqual("PROVIDER_AVAILABLE_ENDTIME" in trans_pracrole_avail,True,"PROVIDER_AVAILABLE_ENDTIME not present in liquid template")
+
+    def test_liqpracrolenotaval(self):
+        print("availableTime")
+        #Validating key PROVIDER_SERVICE_NOT_AVAILABLE_FROM in liquid template
+        if "PROVIDER_SERVICE_NOT_AVAILABLE_FROM" in trans_pracrole_ntavail:
+            print("PROVIDER_SERVICE_NOT_AVAILABLE_FROM" in trans_pracrole_ntavail)
+        #Prints message if the test fails for comparison        
+        self.assertEqual("PROVIDER_SERVICE_NOT_AVAILABLE_FROM" in trans_pracrole_ntavail,True,"PROVIDER_SERVICE_NOT_AVAILABLE_FROM not present in liquid template")
+
+    def test_liqpracrolenotaval(self):
+        print("notAvailable")
+        #Validating key PROVIDER_SERVICE_NOT_AVAILABLE_FROM in liquid template
+        if "PROVIDER_SERVICE_NOT_AVAILABLE_FROM" in trans_pracrole_ntavail:
+            print("PROVIDER_SERVICE_NOT_AVAILABLE_FROM" in trans_pracrole_ntavail)
+        #Prints message if the test fails for comparison        
+        self.assertEqual("PROVIDER_SERVICE_NOT_AVAILABLE_FROM" in trans_pracrole_ntavail,True,"PROVIDER_SERVICE_NOT_AVAILABLE_FROM not present in liquid template")
+
+    def test_liqpracroleavalexp(self):
+        print("availabilityExceptions")
+        #Validating key AVAILABILIY_EXCEPTION in liquid template
+        if "AVAILABILIY_EXCEPTION" in trans_pracrole_availexcp:
+            print("AVAILABILIY_EXCEPTION" in trans_pracrole_availexcp)
+        #Prints message if the test fails for comparison        
+        self.assertEqual("AVAILABILIY_EXCEPTION" in trans_pracrole_availexcp,True,"AVAILABILIY_EXCEPTION not present in liquid template")
+
+
 
 
 
