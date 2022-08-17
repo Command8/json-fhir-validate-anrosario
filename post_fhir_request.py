@@ -5,7 +5,7 @@ import requests
 #from crypt import methods
 import pprint
 import json
-from fhir_functions import getResourceType
+from Functions.fhir_functions import getResourceType
 import secret
 import extract
 

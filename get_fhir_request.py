@@ -12,7 +12,7 @@ import pprint
 import json
 import secret
 
-from fhir_functions import getResourceType , fileName , fhirResource, fhirResourceType
+from Functions.fhir_functions import getResourceType , fileName , fhirResource, fhirResourceType
 
 
 #THIS SCRIPT REQUIRES A TOKEN BE GENERATED IN POSTMAN BEFORE RUNNING. 

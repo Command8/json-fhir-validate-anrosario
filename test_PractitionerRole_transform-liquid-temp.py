@@ -191,7 +191,7 @@ class TestliqTransform (unittest.TestCase):
         if "ENDPOINT_ACCESS" in trans_pracrole_endpnt:
             print("ENDPOINT_ACCESS" in trans_pracrole_endpnt)
         #Prints message if the test fails for comparison        
-        self.assertEqual("ENDPOINT_ACCESS" in trans_pracrole_endpnt,True,"ENDPOINT_ACCESS not present in liquid template")
+        self.assertEqual("ENDPOINT_ACCESS" in trans_pracrole_endpnt,True,"ENDPOINT_ACCESSgit  not present in liquid template")
 
 
 
