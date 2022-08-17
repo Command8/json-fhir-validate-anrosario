@@ -28,30 +28,33 @@ fileinput = (dir_path + '/' +'PractitionerRole_Input.json')
 #Loading file into function using defined path
 dataPracRoleInput = getResourceFile(fileinput)
 
-#Traversing through json to identify the key values for validation        
-print(dataPracRoleInput['PROVIDER_ROLE_ID']) 
-print(dataPracRoleInput['PROVIDER_ACTIVE'])
-print(dataPracRoleInput['PROVIDER_ACTIVE_START'])
-print(dataPracRoleInput['PROVIDER_ACTIVE_END'])
-print(dataPracRoleInput['PRACTITIONER']) 
-print(dataPracRoleInput['PROVIDER_ORGANIZATION']) 
-print(dataPracRoleInput['PROVIDER_ROLE_CODE'])
-print(dataPracRoleInput['PROVIDER_ROLE_CODE_DESC']) 
-print(dataPracRoleInput['PROVIDER_SPECIALITY_CODE'])
-print(dataPracRoleInput['PROVIDER_SPECIALITY_DESC'])
-print(dataPracRoleInput['PROVIDER_LOCATION'])
-print(dataPracRoleInput['PROVIDER_HEALTHCARE_SERVICE'])
-print(dataPracRoleInput['PROVIDER_PHONEPRIMARY'])
-print(dataPracRoleInput['PROVIDER_PHONESECONDARY'])
-print(dataPracRoleInput['PROVIDER_FAX'])
-print(dataPracRoleInput['PROVIDER_CONTACT'])
-print(dataPracRoleInput['PROVIDER_AVAILABLE_STARTTIME'])
-print(dataPracRoleInput['PROVIDER_AVAILABLE_ENDTIME'])
-print(dataPracRoleInput['PROVIDER_SERVICE_NOT_AVAILABLE_FROM'])
-print(dataPracRoleInput['PROVIDER_SERVICE_NOT_AVAILABLE_TO'])
-print(dataPracRoleInput['AVAILABILIY_EXCEPTION'])
-print(dataPracRoleInput['ENDPOINT_ACCESS'])
-      
+
+#Traversing through json to identify the key values for validation 
+
+for item in dataPracRoleInput:       
+    print(item['PROVIDER_ROLE_ID']) 
+    print(item['PROVIDER_ACTIVE'])
+    print(item['PROVIDER_ACTIVE_START'])
+    print(item['PROVIDER_ACTIVE_END'])
+    print(item['PRACTITIONER']) 
+    print(item['PROVIDER_ORGANIZATION']) 
+    print(item['PROVIDER_ROLE_CODE'])
+    print(item['PROVIDER_ROLE_CODE_DESC']) 
+    print(item['PROVIDER_SPECIALITY_CODE'])
+    print(item['PROVIDER_SPECIALITY_DESC'])
+    print(item['PROVIDER_LOCATION'])
+    print(item['PROVIDER_HEALTHCARE_SERVICE'])
+    print(item['PROVIDER_PHONEPRIMARY'])
+    print(item['PROVIDER_PHONESECONDARY'])
+    print(item['PROVIDER_FAX'])
+    print(item['PROVIDER_CONTACT'])
+    print(item['PROVIDER_AVAILABLE_STARTTIME'])
+    print(item['PROVIDER_AVAILABLE_ENDTIME'])
+    print(item['PROVIDER_SERVICE_NOT_AVAILABLE_FROM'])
+    print(item['PROVIDER_SERVICE_NOT_AVAILABLE_TO'])
+    print(item['AVAILABILIY_EXCEPTION'])
+    print(item['ENDPOINT_ACCESS'])
+        
 print("////////////////////////////Transformed JSON Data///////////////////////////////////////////")
 # Open Transformed JSON and retrieve values
 
