@@ -95,4 +95,53 @@ print(prdataTransformer['code'][0]['coding'][0]['code'])
 # pulling key code.coding value PROVIDER_ROLE_CODE_DESC from practitioner role fhir resource
 print(prdataTransformer['code'][0]['text'])
 
+# pulling key value PROVIDER_SPECIALITY_CODE from practitioner role fhir resource
+print(prdataTransformer['specialty'][0]['coding'][0]['code'])
 
+# pulling key value PROVIDER_SPECIALITY_DESC from practitioner role fhir resource
+print(prdataTransformer['specialty'][0]['text'])
+
+#pulling key value PROVIDER_LOCATION from practitioner role fhir resource
+print(prdataTransformer['location']['reference'])
+
+#pulling key value PROVIDER_LOCATION from practitioner role fhir resource
+print(prdataTransformer['location']['display'])
+
+#pulling key value PROVIDER_HEALTHCARE_SERVICE from practitioner role fhir resource
+print(prdataTransformer['healthcareService']['reference'])
+
+#pulling key value PROVIDER_HEALTHCARE_SERVICE from practitioner role fhir resource
+print(prdataTransformer['healthcareService']['display'])
+
+#pulling key value PROVIDER_PHONEPRIMARY from practitioner role fhir resource
+print(prdataTransformer['telecom'][0]['value'])
+
+#pulling key value PROVIDER_PHONESECONDARY from practitioner role fhir resource
+print(prdataTransformer['telecom'][1]['value'])
+
+#pulling key value PROVIDER_CONTACT from practitioner role fhir resource
+print(prdataTransformer['telecom'][2]['value'])
+
+#pulling key value PROVIDER_FAX from practitioner role fhir resource
+print(prdataTransformer['telecom'][3]['value'])
+
+#pulling key value PROVIDER_AVAILABLE_STARTTIME from practitioner role fhir resource
+print(prdataTransformer['availableTime'][0]['availableStartTime'])
+
+#pulling key value PROVIDER_AVAILABLE_ENDTIME from practitioner role fhir resource
+print(prdataTransformer['availableTime'][0]['availableEndTime'])
+
+#pulling key value PROVIDER_SERVICE_NOT_AVAILABLE_FROM from practitioner role fhir resource
+print(prdataTransformer['notAvailable'][0]['during']['start'])
+
+#pulling key value PROVIDER_SERVICE_NOT_AVAILABLE_TO from practitioner role fhir resource
+print(prdataTransformer['notAvailable'][0]['during']['end'])
+
+# pulling key value AVAILABILIY_EXCEPTION from practitioner role fhir resource
+print(prdataTransformer['availabilityExceptions']) 
+
+# pulling key value ENDPOINT_ACCESS from practitioner role fhir resource
+print(prdataTransformer['endpoint'][0]['reference']) 
+
+# pulling key value ENDPOINT_ACCESS from practitioner role fhir resource
+print(prdataTransformer['endpoint'][0]['display']) 
