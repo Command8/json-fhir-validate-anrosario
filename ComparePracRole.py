@@ -1,7 +1,7 @@
 from email.headerregistry import Address
 from multiprocessing.sharedctypes import Value
 import json
-from ntpath import join
+from ntpath import join  
 from turtle import pd
 
 #import pathlib - Other library that can be used to reference directories
@@ -56,20 +56,43 @@ print("////////////////////////////Transformed JSON Data////////////////////////
 # Open Transformed JSON and retrieve values
 
 #Loading the absolute path to be passed into function
-#Access parent directory and create path to load snowflake input file into function
-fileoutput = (dir_path + '/' +'TransformedPrac.json')
+#Access parent directory and create path to load json input file into function
+prfileoutput = ('TransformedPracRole.json')
 
 #Another way to access parent directory to reference files into function
 #fileoutput = pathlib.Path(__file__).parent/'TransformedPrac.json'
 
 #Loading transformed JSON using function
-dataTransformer= getResourceFile(fileoutput)
+prdataTransformer= getResourceFile(prfileoutput)
 
-# pulling key value PROVIDER_ID from patient profile
-print(dataTransformer['identifier'][10]['value']) 
+# pulling key value PROVIDER_ROLE_ID from practitioner role fhir resource
+print(prdataTransformer['identifier'][0]['value']) 
 
-# pulling key value PROVIDER_NPI from patient profile
-print(dataTransformer['identifier'][1]['value']) 
+# pulling key value PROVIDER_ACTIVE from practitioner role fhir resource
+print(prdataTransformer['active']) 
 
-# pulling key value PROVIDER_PIN from patient profile
-print(dataTransformer['identifier'][2]['value']) 
+# pulling key value PROVIDER_ACTIVE_START  from practitioner role fhir resource
+print(prdataTransformer['period'][0]['start']) 
+
+# pulling key value PROVIDER_ACTIVE_END  from practitioner role fhir resource
+print(prdataTransformer['period'][0]['start']) 
+
+# pulling key value Practitioner/id  from practitioner role fhir resource
+print(prdataTransformer['practitioner'][0]['reference']) 
+
+# pulling key value PRACTITIONER from practitioner role fhir resource
+print(prdataTransformer['practitioner'][0]['display'])
+
+# pulling key value PROVIDER_ORGANIZATION from practitioner role fhir resource
+print(prdataTransformer['organization']['reference'])
+
+# pulling key value PROVIDER_ORGANIZATION from practitioner role fhir resource
+print(prdataTransformer['organization']['display'])
+
+# pulling key code.coding value PROVIDER_ROLE_CODE from practitioner role fhir resource
+print(prdataTransformer['code'][0]['coding'][0]['code'])
+
+# pulling key code.coding value PROVIDER_ROLE_CODE_DESC from practitioner role fhir resource
+print(prdataTransformer['code'][0]['text'])
+
+
