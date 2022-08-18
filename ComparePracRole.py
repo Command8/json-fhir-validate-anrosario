@@ -78,7 +78,7 @@ print(prdataTransformer['active'])
 print(prdataTransformer['period'][0]['start']) 
 
 # pulling key value PROVIDER_ACTIVE_END  from practitioner role fhir resource
-print(prdataTransformer['period'][0]['start']) 
+print(prdataTransformer['period'][0]['end']) 
 
 # pulling key value Practitioner/id  from practitioner role fhir resource
 print(prdataTransformer['practitioner'][0]['reference']) 

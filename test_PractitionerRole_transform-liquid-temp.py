@@ -2,9 +2,9 @@ import unittest
 import json
 
 
-trans_pracrole_resource = '"resourceType": "PractitionerRole","id":"example","text": {"status": "generated","div": "   "div": "{{msg.text.div | escape_special_chars }}"},'
+trans_pracrole_resource = '"resourceType": "PractitionerRole","id":"example","text": {"status": "generated","div": "   "div": "{{msg.text.div | escape_special_chars }}"},"identifier": [{"use": "official","value": "{{msg.PROVIDER_ROLE_ID }}"}'
 
-trans_pracrole_active = '"active": "true"'
+trans_pracrole_active = '"active": "{{msg.PROVIDER_ACTIVE}}"'
 
 trans_pracrole_period = '"period": [{"start": "{{ msg.PROVIDER_ACTIVE_START | date: "yyyy-MM-dd"}}","end": "{{msg.PROVIDER_ACTIVE_END | date: "yyyy-MM-dd"}}",}],'
 
@@ -24,7 +24,7 @@ trans_pracrole_tel = '"telecom": [{"system": "phone","value": "{{msg.PROVIDER_PH
 
 trans_pracrole_avail= '"availableTime": [{"daysOfWeek":  ["mon","tue","wed"],"availableStartTime":  "{{ msg.PROVIDER_AVAILABLE_STARTTIME}}","availableEndTime": "{{ msg.PROVIDER_AVAILABLE_ENDTIME}}" ],'
 
-trans_pracrole_ntavail = ' 	"notAvailable": [{"description": "Dr. on vacation","during": {"start": "{{ msg.PROVIDER_SERVICE_NOT_AVAILABLE_FROM}}"}}],"availabilityExceptions": "{{ msg.AVAILABILIY_EXCEPTION}}",'
+trans_pracrole_ntavail = ' 	"notAvailable": [{"description": "Dr. on vacation","during": {"start": "{{ msg.PROVIDER_SERVICE_NOT_AVAILABLE_FROM}}"}}],"end": "{{ msg.PROVIDER_SERVICE_NOT_AVAILABLE_TO}}",'
 
 trans_pracrole_availexcp = '"availabilityExceptions": "{{ msg.AVAILABILIY_EXCEPTION}}",'
 
