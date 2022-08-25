@@ -1,0 +1,142 @@
+{
+  "resourceType" : "Claim",
+  "identifier" : "Identifier", 
+  "status" : "<code>", 
+  "type" : "CodeableConcept", 
+  "subType" : "CodeableConcept", 
+  "use" : "<code>",
+  "patient" : "Reference(Patient)" , 
+  "billablePeriod" : "Period", 
+  "created" : "<dateTime>", 
+  "enterer" : "Reference(Practitioner|PractitionerRole)" , 
+  "insurer" : "Reference(Organization)" 
+  "provider" : { Reference(Organization|Practitioner|PractitionerRole) }, 
+  "priority" : { CodeableConcept }, // R!  Desired processing ugency
+  "fundsReserve" : { CodeableConcept }, // For whom to reserve funds
+  "related" : [{ // Prior or corollary claims
+    "claim" : { Reference(Claim) }, // Reference to the related claim
+    "relationship" : { CodeableConcept }, // How the reference claim is related
+    "reference" : { Identifier } // File or case reference
+  }],
+  "prescription" : { Reference(DeviceRequest|MedicationRequest|
+   VisionPrescription) }, // Prescription authorizing services and products
+  "originalPrescription" : { Reference(DeviceRequest|MedicationRequest|
+   VisionPrescription) }, // Original prescription if superseded by fulfiller
+  "payee" : { // Recipient of benefits payable
+    "type" : { CodeableConcept }, // R!  Category of recipient
+    "party" : { Reference(Organization|Patient|Practitioner|PractitionerRole|
+    RelatedPerson) } // Recipient reference
+  },
+  "referral" : { Reference(ServiceRequest) }, // Treatment referral
+  "facility" : { Reference(Location) }, // Servicing facility
+  "careTeam" : [{ // Members of the care team
+    "sequence" : "<positiveInt>", // R!  Order of care team
+    "provider" : { Reference(Organization|Practitioner|PractitionerRole) }, // R!  Practitioner or organization
+    "responsible" : <boolean>, // Indicator of the lead practitioner
+    "role" : { CodeableConcept }, // Function within the team
+    "qualification" : { CodeableConcept } // Practitioner credential or specialization
+  }],
+  "supportingInfo" : [{ // Supporting information
+    "sequence" : "<positiveInt>", // R!  Information instance identifier
+    "category" : { CodeableConcept }, // R!  Classification of the supplied information
+    "code" : { CodeableConcept }, // Type of information
+    // timing[x]: When it occurred. One of these 2:
+    "timingDate" : "<date>",
+    "timingPeriod" : { Period },
+    // value[x]: Data to be provided. One of these 5:
+    "valueBoolean" : <boolean>,
+    "valueString" : "<string>",
+    "valueQuantity" : { Quantity },
+    "valueAttachment" : { Attachment },
+    "valueReference" : { Reference(Any) },
+    "reason" : { CodeableConcept } // Explanation for the information
+  }],
+  "diagnosis" : [{ // Pertinent diagnosis information
+    "sequence" : "<positiveInt>", // R!  Diagnosis instance identifier
+    // diagnosis[x]: Nature of illness or problem. One of these 2:
+    "diagnosisCodeableConcept" : { CodeableConcept },
+    "diagnosisReference" : { Reference(Condition) },
+    "type" : [{ CodeableConcept }], // Timing or nature of the diagnosis
+    "onAdmission" : { CodeableConcept }, // Present on admission
+    "packageCode" : { CodeableConcept } // Package billing code
+  }],
+  "procedure" : [{ // Clinical procedures performed
+    "sequence" : "<positiveInt>", // R!  Procedure instance identifier
+    "type" : [{ CodeableConcept }], // Category of Procedure
+    "date" : "<dateTime>", // When the procedure was performed
+    // procedure[x]: Specific clinical procedure. One of these 2:
+    "procedureCodeableConcept" : { CodeableConcept },
+    "procedureReference" : { Reference(Procedure) },
+    "udi" : [{ Reference(Device) }] // Unique device identifier
+  }],
+  "insurance" : [{ // R!  Patient insurance information
+    "sequence" : "<positiveInt>", // R!  Insurance instance identifier
+    "focal" : <boolean>, // R!  Coverage to be used for adjudication
+    "identifier" : { Identifier }, // Pre-assigned Claim number
+    "coverage" : { Reference(Coverage) }, // R!  Insurance information
+    "businessArrangement" : "<string>", // Additional provider contract number
+    "preAuthRef" : ["<string>"], // Prior authorization reference number
+    "claimResponse" : { Reference(ClaimResponse) } // Adjudication results
+  }],
+  "accident" : { // Details of the event
+    "date" : "<date>", // R!  When the incident occurred
+    "type" : { CodeableConcept }, // The nature of the accident 
+    // location[x]: Where the event occurred. One of these 2:
+    "locationAddress" : { Address }
+    "locationReference" : { Reference(Location) }
+  },
+  "item" : [{ // Product or service provided
+    "sequence" : "<positiveInt>", // R!  Item instance identifier
+    "careTeamSequence" : ["<positiveInt>"], // Applicable careTeam members
+    "diagnosisSequence" : ["<positiveInt>"], // Applicable diagnoses
+    "procedureSequence" : ["<positiveInt>"], // Applicable procedures
+    "informationSequence" : ["<positiveInt>"], // Applicable exception and supporting information
+    "revenue" : { CodeableConcept }, // Revenue or cost center code
+    "category" : { CodeableConcept }, // Benefit classification
+    "productOrService" : { CodeableConcept }, // R!  Billing, service, product, or drug code
+    "modifier" : [{ CodeableConcept }], // Product or service billing modifiers
+    "programCode" : [{ CodeableConcept }], // Program the product or service is provided under
+    // serviced[x]: Date or dates of service or product delivery. One of these 2:
+    "servicedDate" : "<date>",
+    "servicedPeriod" : { Period },
+    // location[x]: Place of service or where product was supplied. One of these 3:
+    "locationCodeableConcept" : { CodeableConcept },
+    "locationAddress" : { Address },
+    "locationReference" : { Reference(Location) },
+    "quantity" : { Quantity(SimpleQuantity) }, // Count of products or services
+    "unitPrice" : { Money }, // Fee, charge or cost per item
+    "factor" : <decimal>, // Price scaling factor
+    "net" : { Money }, // Total item cost
+    "udi" : [{ Reference(Device) }], // Unique device identifier
+    "bodySite" : { CodeableConcept }, // Anatomical location
+    "subSite" : [{ CodeableConcept }], // Anatomical sub-location
+    "encounter" : [{ Reference(Encounter) }], // Encounters related to this billed item
+    "detail" : [{ // Product or service provided
+      "sequence" : "<positiveInt>", // R!  Item instance identifier
+      "revenue" : { CodeableConcept }, // Revenue or cost center code
+      "category" : { CodeableConcept }, // Benefit classification
+      "productOrService" : { CodeableConcept }, // R!  Billing, service, product, or drug code
+      "modifier" : [{ CodeableConcept }], // Service/Product billing modifiers
+      "programCode" : [{ CodeableConcept }], // Program the product or service is provided under
+      "quantity" : { Quantity(SimpleQuantity) }, // Count of products or services
+      "unitPrice" : { Money }, // Fee, charge or cost per item
+      "factor" : <decimal>, // Price scaling factor
+      "net" : { Money }, // Total item cost
+      "udi" : [{ Reference(Device) }], // Unique device identifier
+      "subDetail" : [{ // Product or service provided
+        "sequence" : "<positiveInt>", // R!  Item instance identifier
+        "revenue" : { CodeableConcept }, // Revenue or cost center code
+        "category" : { CodeableConcept }, // Benefit classification
+        "productOrService" : { CodeableConcept }, // R!  Billing, service, product, or drug code
+        "modifier" : [{ CodeableConcept }], // Service/Product billing modifiers
+        "programCode" : [{ CodeableConcept }], // Program the product or service is provided under
+        "quantity" : { Quantity(SimpleQuantity) }, // Count of products or services
+        "unitPrice" : { Money }, // Fee, charge or cost per item
+        "factor" : <decimal>, // Price scaling factor
+        "net" : { Money }, // Total item cost
+        "udi" : [{ Reference(Device) }] // Unique device identifier
+      }]
+    }]
+  }],
+  "total" : { Money } // Total claim cost
+}

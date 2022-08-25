@@ -28,8 +28,8 @@ class TestliqTransform (unittest.TestCase):
     def test_liqclmsnum(self):
         print("identifier.value = ClaimNumber exists:")
         #Validating key ClaimNumber in liquid template
-        if "ClaimNumber" in trans_claims_resource:
-            print ("ClaimNumber" in trans_claims_resource)
+        if ("ClaimNumber" in trans_claims_resource) == True:
+            print ("ClaimNumber exists in liquid template")
         #Prints message if the test fails for comparison    
         self.assertEqual("ClaimNumber" in trans_claims_resource,True,"ClaimNumber not present in liquid template") 
 
@@ -37,7 +37,7 @@ class TestliqTransform (unittest.TestCase):
         print("status = active exists:")
         #Validating key claim in liquid template
         if "active" in trans_claims_status:
-            print ("active" in trans_claims_status)
+            print ("active exists in liquid template")
         #Prints message if the test fails for comparison    
         self.assertEqual("active" in trans_claims_status,True,"active not present in liquid template") 
 
@@ -45,7 +45,7 @@ class TestliqTransform (unittest.TestCase):
         print("use = claim exists:")
         #Validating key claim in liquid template
         if "claim" in trans_claims_use:
-            print ("claim" in trans_claims_use)
+            print ("claim exists in liquid template")
         #Prints message if the test fails for comparison    
         self.assertEqual("claim" in trans_claims_use,True,"claim not present in liquid template") 
 
@@ -53,7 +53,7 @@ class TestliqTransform (unittest.TestCase):
         print("patient.reference = CenseoID exists:")
         #Validating key CenseoID in liquid template
         if "CenseoID" in trans_claims_patient:
-            print ("CenseoID" in trans_claims_patient)
+            print ("CenseoID exists in liquid template")
         #Prints message if the test fails for comparison    
         self.assertEqual("CenseoID" in trans_claims_patient,True,"CenseoID not present in liquid template") 
 
@@ -62,31 +62,31 @@ class TestliqTransform (unittest.TestCase):
         print("billablePeriod.start = ServiceFromDate_Date_of_Service exists:")
         #Validating key ServiceFromDate_Date_of_Service in liquid template
         if "ServiceFromDate_Date_of_Service" in trans_claims_billablePeriod:
-            print ("ServiceFromDate_Date_of_Service" in trans_claims_billablePeriod)
+            print ("ServiceFromDate_Date_of_Service exists in liquid template")
         #Prints message if the test fails for comparison    
         self.assertEqual("ServiceFromDate_Date_of_Service" in trans_claims_billablePeriod,True,"ServiceFromDate_Date_of_Service not present in liquid template") 
 
     def test_liqclmsbp2(self):
         print("billablePeriod.end = ServiceThruDate exists:")
         #Validating key ServiceThruDate in liquid template
-        if "ServiceThruDate" in trans_claims_billablePeriod:
-            print ("ServiceThruDate" in trans_claims_billablePeriod)
+        if ("ServiceThruDate" in trans_claims_billablePeriod) == True:
+            print ("ServiceThruDate exists in liquid template")
         #Prints message if the test fails for comparison    
         self.assertEqual("ServiceThruDate" in trans_claims_billablePeriod,True,"ServiceThruDate not present in liquid template") 
 
     def test_liqclmscreated(self):
         print("created = ClaimEntryDate exists:")
         #Validating key ClaimEntryDate in liquid template
-        if "ClaimEntryDate" in trans_claims_created:
-            print ("ClaimEntryDate" in trans_claims_created)
+        if ("ClaimEntryDate" in trans_claims_created) == True:
+            print ("ClaimEntryDate exists in liquid template" in trans_claims_created)
         #Prints message if the test fails for comparison    
         self.assertEqual("ClaimEntryDate" in trans_claims_created,True,"ClaimEntryDate not present in liquid template") 
 
     def test_liqclmenterer(self):
         print("enterer.reference = Provider_ID exists:")
         #Validating key Provider_ID in liquid template
-        if "Provider_ID" in trans_claims_enterer:
-            print ("Provider_ID" in trans_claims_enterer)
+        if ("Provider_ID" in trans_claims_enterer) == True:
+            print ("Provider_ID exists in liquid template")
         #Prints message if the test fails for comparison    
         self.assertEqual("Provider_ID" in trans_claims_enterer,True,"Provider_ID not present in liquid template") 
 
