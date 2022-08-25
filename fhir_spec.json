@@ -9,57 +9,54 @@
   "billablePeriod" : "Period", 
   "created" : "<dateTime>", 
   "enterer" : "Reference(Practitioner|PractitionerRole)" , 
-  "insurer" : "Reference(Organization)" 
-  "provider" : { Reference(Organization|Practitioner|PractitionerRole) }, 
-  "priority" : { CodeableConcept }, // R!  Desired processing ugency
-  "fundsReserve" : { CodeableConcept }, // For whom to reserve funds
-  "related" : [{ // Prior or corollary claims
-    "claim" : { Reference(Claim) }, // Reference to the related claim
-    "relationship" : { CodeableConcept }, // How the reference claim is related
-    "reference" : { Identifier } // File or case reference
-  }],
-  "prescription" : { Reference(DeviceRequest|MedicationRequest|
-   VisionPrescription) }, // Prescription authorizing services and products
-  "originalPrescription" : { Reference(DeviceRequest|MedicationRequest|
-   VisionPrescription) }, // Original prescription if superseded by fulfiller
-  "payee" : { // Recipient of benefits payable
-    "type" : { CodeableConcept }, // R!  Category of recipient
-    "party" : { Reference(Organization|Patient|Practitioner|PractitionerRole|
-    RelatedPerson) } // Recipient reference
-  },
-  "referral" : { Reference(ServiceRequest) }, // Treatment referral
-  "facility" : { Reference(Location) }, // Servicing facility
-  "careTeam" : [{ // Members of the care team
-    "sequence" : "<positiveInt>", // R!  Order of care team
-    "provider" : { Reference(Organization|Practitioner|PractitionerRole) }, // R!  Practitioner or organization
-    "responsible" : <boolean>, // Indicator of the lead practitioner
-    "role" : { CodeableConcept }, // Function within the team
-    "qualification" : { CodeableConcept } // Practitioner credential or specialization
-  }],
-  "supportingInfo" : [{ // Supporting information
-    "sequence" : "<positiveInt>", // R!  Information instance identifier
-    "category" : { CodeableConcept }, // R!  Classification of the supplied information
-    "code" : { CodeableConcept }, // Type of information
-    // timing[x]: When it occurred. One of these 2:
-    "timingDate" : "<date>",
-    "timingPeriod" : { Period },
-    // value[x]: Data to be provided. One of these 5:
-    "valueBoolean" : <boolean>,
-    "valueString" : "<string>",
-    "valueQuantity" : { Quantity },
-    "valueAttachment" : { Attachment },
-    "valueReference" : { Reference(Any) },
-    "reason" : { CodeableConcept } // Explanation for the information
-  }],
-  "diagnosis" : [{ // Pertinent diagnosis information
-    "sequence" : "<positiveInt>", // R!  Diagnosis instance identifier
-    // diagnosis[x]: Nature of illness or problem. One of these 2:
-    "diagnosisCodeableConcept" : { CodeableConcept },
-    "diagnosisReference" : { Reference(Condition) },
-    "type" : [{ CodeableConcept }], // Timing or nature of the diagnosis
-    "onAdmission" : { CodeableConcept }, // Present on admission
-    "packageCode" : { CodeableConcept } // Package billing code
-  }],
+  "insurer" : "Reference(Organization)" ,
+  "provider" : "{ Reference(Organization|Practitioner|PractitionerRole) }", 
+  "priority" : "{ CodeableConcept }", 
+  "fundsReserve" : "{ CodeableConcept }, // For whom to reserve funds",
+  "related" : [
+    { 
+      "claim" : "{Reference(Claim)",
+      "relationship" : "{ CodeableConcept }",
+      "reference" : "{ Identifier }"}
+    ],
+  "prescription" : "{ Reference(DeviceRequest|MedicationRequest|VisionPrescription) }", 
+  "originalPrescription" : "{ Reference(DeviceRequest|MedicationRequest|VisionPrescription) }", 
+  "payee" : "{ // Recipient of benefits payable",
+    "type" : "{ CodeableConcept }",
+    "party" : "{ Reference(Organization|Patient|Practitioner|PractitionerRole|RelatedPerson)}",
+  "referral" : "{ Reference(ServiceRequest) }",
+  "facility" : "{ Reference(Location) }, // Servicing facility",
+  "careTeam" : [
+    { 
+      "sequence" : "<positiveInt>", 
+      "provider" : "{ Reference(Organization|Practitioner|PractitionerRole) }", 
+      "responsible" : "<boolean>", 
+      "role" : "{ CodeableConcept }",
+      "qualification" : "{ CodeableConcept }"
+       }
+      ],
+
+  "supportingInfo" : [
+    { 
+      "sequence" : "<positiveInt>",
+      "category" : "{ CodeableConcept }", 
+      "code" : "{ CodeableConcept }", 
+      "timingDate" : "<date>",
+      "timingPeriod" : "{ Period }",
+      "valueBoolean" : "<boolean>",
+      "valueString" : "<string>",
+      "valueQuantity" : "{Quantity}",
+      "valueAttachment" : "{ Attachment }",
+      "valueReference" : "{ Reference(Any) }",
+      "reason" : "{ CodeableConcept }" }
+    ],
+  "diagnosis" : "[{ // Pertinent diagnosis information",
+    "sequence" : "<positiveInt>", 
+    "diagnosisCodeableConcept" : "{ CodeableConcept }",
+    "diagnosisReference" : "{ Reference(Condition) }",
+    "type" : "[{ CodeableConcept }]", 
+    "onAdmission" : "{ CodeableConcept }",
+    "packageCode" : "{ CodeableConcept }}]",
   "procedure" : [{ // Clinical procedures performed
     "sequence" : "<positiveInt>", // R!  Procedure instance identifier
     "type" : [{ CodeableConcept }], // Category of Procedure
