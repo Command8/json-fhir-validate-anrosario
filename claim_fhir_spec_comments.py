@@ -1,6 +1,7 @@
 
 resource_type_info = 'from Resource= id, meta, implicitRules, and language from DomainResource: text, contained, extension, and modifierExtension'
-identifier_info = 'active | cancelled | draft | entered-in-error'
+identifier_info = ''
+status = 'active | cancelled | draft | entered-in-error'
 type_info = '// R!  Category or discipline'
 subType_info = '// More granular claim type'
 use_info = '// R!  claim | preauthorization | predetermination'

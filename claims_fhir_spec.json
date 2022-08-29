@@ -4,7 +4,7 @@
   "status" : "<code>", 
   "type" : "CodeableConcept // R!  Category or discipline", 
   "subType" : "CodeableConcept // More granular claim type'", 
-  "use" : "<code>",
+  "use" : "<code> // R!  claim | preauthorization | predetermination",
   "patient" : "Reference(Patient)" , 
   "billablePeriod" : "Period", 
   "created" : "<dateTime>", 
