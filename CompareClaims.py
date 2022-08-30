@@ -1,4 +1,5 @@
 from email.headerregistry import Address
+from msilib import sequence
 from multiprocessing.sharedctypes import Value
 import json
 from ntpath import join  
@@ -103,166 +104,107 @@ print("////////////////////////////Transformed JSON Data////////////////////////
 
 #Loading the absolute path to be passed into function
 #Access parent directory and create path to load json input file into function
-clmsfileoutput = ('TransformedClaims.json')
-
+clmsfileoutput = ('cures-fhir-sig-claims-converter.json')
 #Another way to access parent directory to reference files into function
 #fileoutput = pathlib.Path(__file__).parent/'Transformedclmsac.json'
-
 #Loading transformed JSON using function
 clmsdataTransformer= getResourceFile(clmsfileoutput)
 
-# pulling key value RESOURCE_TYPE from claims fhir resource
+#RESOURCETYPE
+# pulling key value RESOURCE_TYPE from claim fhir resource
 print(clmsdataTransformer['resourcesType'])
 
-# pulling key value CLAIMS_ID from claims fhir resource
-#print(clmsdataTransformer['id'])
-
-# pulling key value CLAIMS_TEXT from claims fhir resource
-#print(clmsdataTransformer['text'][0]['status'])
-
-# pulling key value identifer.use CLAIMS_IDENTIFIER from claims fhir resource
+#IDENTIFIER
+# pulling key value CLAIM_NUMBER from claim identifier.use fhir resource
 print(clmsdataTransformer['identifier'][0]['use'])
+# pulling key value CLAIM_NUMBER from claim identifier.value fhir resource
+print(clmsdataTransformer['identifier'][0]['value'])
 
-# pulling key value identifer.system CLAIMS_IDENTIFIER from claims fhir resource
-#print(clmsdataTransformer['identifier'][0]['system']) 
+#STATUS
+#pulling key value ClaimPaymentStatus from claim.status  fhir resource // R!  active | cancelled | draft | entered-in-error
+print(clmsdataTransformer['status'])
 
-# pulling key value identifier.value CLAIMS_IDENTIFIER from claims fhir resource
-print(clmsdataTransformer['identifier'][0]['value']) 
-
-# pulling key value status CLAIMS_STATUS from claims fhir resource
-print(clmsdataTransformer['status']) 
-
-# pulling key type.coding.system value CLAIMS_TYPE from claims fhir resource
-print(clmsdataTransformer['type'][0]['coding'][0]['system'])
-
-# pulling key type.coding.code value CLAIMS_TYPE from claims fhir resource
-print(clmsdataTransformer['type'][0]['coding'][0]['code'])
-
-# pulling key value status CLAIMS_USE from claims fhir resource
-print(clmsdataTransformer['use']) 
-
-# pulling key patient.reference value CLAIMS_PATIENT from claims fhir resource
+#PATIENT
+# pulling key value CENSEO_ID identifer.use Claim patient.reference fhir resource
 print(clmsdataTransformer['patient'][0]['reference'])
 
-#pulling key billablePeriod.start created value status CLAIMS_BILLABLE_START from claims fhir resource
+#BILLABLEPERIOD
+# pulling key value BILLABLE_PERIOD CLAIM from claim.billablePeriod.start fhir resource
+#ServiceFromDate_Date_of_Service
 print(clmsdataTransformer['billablePeriod'][0]['start']) 
+# pulling key value BILLABLE_PERIOD CLAIM ServiceThruDate from claim.billablePeriod.end fhir resource
+print(clmsdataTransformer['billablePeriod'][0]['end']) 
 
-#pulling key billablePeriod.end created value status CLAIMS_BILLABLE_START from claims fhir resource
-print(clmsdataTransformer['billablePeriod'][0]['end'])
+#CREATED
+# pulling key value status ClaimEntryDate from claim fhir resource
+print(clmsdataTransformer['created']) 
 
-#pulling key created value status CLAIMS_CREATED from claims fhir resource
-print(clmsdataTransformer['created'])
+#ENTERER
+# pulling key value status Provider_ID from claim enterer.reference fhir resource
+print(clmsdataTransformer['enterer']) 
 
-#pulling key entered value status CLAIMS_ENTERED from claims fhir resource
-print(clmsdataTransformer['entered'][0]['reference'])
+#PROVIDER
+# pulling key value status Provider_ID from claim provider.reference fhir resource
+print(clmsdataTransformer['provider']) 
 
-# pulling key value provider.reference PROVIDER_REFERENCE from claims fhir resource
-print(clmsdataTransformer['provider'][0]['reference'])
+#PRIORITY
+# pulling key value RenderingProviderNPI from claim priority.coding.code fhir resource //R!  Desired processing ugency"
+print(clmsdataTransformer['priority'][0]['coding'][0]['code'])
 
-# pulling key value priority.coding.code PRIORITY_CODE from claims fhir resource
-print(clmsdataTransformer['priority'][0]['coding']['code']) 
+#PRESCRIPTION
+# pulling key value prescription.reference from claim prescription.reference fhir resource //R!  Desired processing ugency"
+print(clmsdataTransformer['prescription'][0]['reference'])
 
+#FACILITY
+#pulling key PlaceOfServicevalue CLAIM_TYPE from claim facility.identifier.value fhir resource
+print(clmsdataTransformer['facility'][0]['identifier'][0]['value'])
 
-# pulling key prescription.reference value CLAIMS_PRESCRIPTION  from claims fhir resource
-print(clmsdataTransformer['prescription'][0]['reference']) 
-
-# pulling key payee.type.coding.code  value CLAIMS_PAYEE  from claims fhir resource
-print(clmsdataTransformer['payee'][0]['type'][0]['coding']['code']) 
-
-# pulling key payee.type.coding.display value CLAIMS_PAYEE  from claims fhir resource
-print(clmsdataTransformer['payee'][0]['type'][0]['coding']['display']) 
-
-# pulling key insurer.reference value CLAIMS INSURER_ORGANIZATION  from claims fhir resource
-print(clmsdataTransformer['insurer'][0]['reference']) 
-
-# pulling key facility.identifier.value value CLAIMS_PAYEE from claims fhir resource
-print(clmsdataTransformer['facility'][0]['identifier']['value']['display'])
-
-# pulling key careTeam.sequence value CLAIMS_CARETEAM from claims fhir resource
+#CARETEAM
+#pulling key value status Provider_ID from claim careTeam.sequence value fhir resource
 print(clmsdataTransformer['careTeam'][0]['sequence'])
+# pulling key value status Provider_ID from claim careTeam.provider.reference value fhir resource
+print(clmsdataTransformer['careTeam'][0]['provider'])  
 
-# pulling key careTeam.provider.reference value CLAIMS_CARETEAM from claims fhir resource
-print(clmsdataTransformer['careTeam'][0]['provider']['reference'])
+#DIAGNOSIS
+# pulling key value  from claim diagnosis.sequence fhir resource
+print(clmsdataTransformer['diagnosis'][0]['sequence'])
+# pulling key DX_1 value from claim diagnosis.diagnosisCodeableConcept.coding.code fhir resource
+print(clmsdataTransformer['diagnosis'][0]['diagnosisCodeableConcept']['coding']['code'])
+print(clmsdataTransformer['diagnosis'][0]['sequence'])
+# pulling key DX_2 value from claim diagnosis.diagnosisCodeableConcept.coding.code fhir resource
+print(clmsdataTransformer['diagnosis'][0]['diagnosisCodeableConcept']['coding']['code'])
+print(clmsdataTransformer['diagnosis'][0]['sequence'])
+# pulling key DX_3 value from claim diagnosis.diagnosisCodeableConcept.coding.code fhir resource
+print(clmsdataTransformer['diagnosis'][0]['diagnosisCodeableConcept']['coding']['code'])
 
-# pulling key diagnosis.sequence.diagnosisCodeableConcept.coding.code value CLAIMS_DIAGNOSIS1 from claims fhir resource
-print(clmsdataTransformer['diagnosis'][0]['sequence']['diagnosisCodeableConcept']['coding']['code'])
-
-# pulling key diagnosis.sequence.diagnosisCodeableConcept.coding.code value CLAIMS_DIAGNOSIS2 from claims fhir resource
-print(clmsdataTransformer['diagnosis'][0]['sequence']['diagnosisCodeableConcept']['coding']['code'])
-
-# pulling key diagnosis.sequence.diagnosisCodeableConcept.coding.code value CLAIMS_DIAGNOSIS3 from claims fhir resource
-print(clmsdataTransformer['diagnosis'][0]['sequence']['diagnosisCodeableConcept']['coding']['code'])
-
-# pulling key procedure.sequence value CLAIMS_PROCEDURE1 from claims fhir resource
-print(clmsdataTransformer['procedure'][0]['sequence'])
-
-#  pulling key procedure.sequence.type.coding.code value CLAIMS_PROCEDURE1 from claims fhir resource
-print(clmsdataTransformer['procedure'][0]['type'][0]['coding']['code'])
-
-#  pulling key procedure.date value CLAIMS_PROCEDURE1 from claims fhir resource
+#PROCEDURE
+#pulling key value  "1"   from claim procedure.sequence fhir resource
+print(clmsdataTransformer['prodecure'][0]['sequence']) 
+#pulling key value  "primary" from claim procedure.type.coding.code fhir resource
+print(clmsdataTransformer['procedure'][0]['type']['coding']['code'])
+#pulling key value ServiceFromDate from claim.prodecure.date fhir resource
 print(clmsdataTransformer['procedure'][0]['date'])
+#pulling key value CPTCode_Primary from claim fhir resource
+print(clmsdataTransformer['procedure'][0]['procedureCodeableConcept']['coding']['code'])
 
-#  pulling key procedure.procedureCodeableConcept.coding.code value CLAIMS_PROCEDURE2 from claims fhir resource
-print(clmsdataTransformer['procedure'][0]['procedureCodeableConcept'][0]['coding']['code'])
-
-# pulling key procedure.sequence value CLAIMS_PROCEDURE1 from claims fhir resource
-print(clmsdataTransformer['procedure'][0]['sequence'])
-
-#  pulling key procedure.sequence.type.coding.code value CLAIMS_PROCEDURE2 from claims fhir resource
-print(clmsdataTransformer['procedure'][0]['type'][0]['coding']['code'])
-
-#  pulling key procedure.date value CLAIMS_PROCEDURE2 from claims fhir resource
+# pulling key value "2" from claim procedure.sequence fhir resource
+print(clmsdataTransformer['prodecure'][0]['sequence']) 
+#pulling key value  "secondary" from claim procedure.type.coding.code fhir resource
+print(clmsdataTransformer['procedure'][0]['procedureCodeableConcept']['coding']['code'])
+#pulling key value ServiceFromDate from claim.prodecure.date fhir resource
 print(clmsdataTransformer['procedure'][0]['date'])
+#pulling key value ProcedureCode2 from claim fhir resource
+print(clmsdataTransformer['procedure'][0]['procedureCodeableConcept']['coding']['code'])
 
-#  pulling key procedure.procedureCodeableConcept.coding.code value CLAIMS_PROCEDURE2 from claims fhir resource
-print(clmsdataTransformer['procedure'][0]['procedureCodeableConcept'][0]['coding']['code'])
-
-# pulling key procedure.sequence value CLAIMS_PROCEDURE1 from claims fhir resource
-print(clmsdataTransformer['procedure'][0]['sequence'])
-
-#  pulling key procedure.sequence.type.coding.code value CLAIMS_PROCEDURE3 from claims fhir resource
-print(clmsdataTransformer['procedure'][0]['type'][0]['coding']['code'])
-
-#  pulling key procedure.date value CLAIMS_PROCEDURE3 from claims fhir resource
-print(clmsdataTransformer['procedure'][0]['date'])
-
-#  pulling key procedure.procedureCodeableConcept.coding.code value CLAIMS_PROCEDURE3 from claims fhir resource
-print(clmsdataTransformer['procedure'][0]['procedureCodeableConcept'][0]['coding']['code'])
-
-# pulling key insurance.sequence CLAIMS_INSURANCE from claims fhir resource
+#INSURANCE
+# pulling key value "1" from claim insurance.sequence fhir resource
 print(clmsdataTransformer['insurance'][0]['sequence'])
-
-# pulling key insurance.focal value CLAIMS_INSURANCE from claims fhir resource
+# pulling key value "true" from claim insurance.focal fhir resource
 print(clmsdataTransformer['insurance'][0]['focal'])
+# pulling key value  from claim insurance.coverage.reference fhir resource
+print(clmsdataTransformer['insurance'][0]['coverage']['reference']) 
 
-# pulling key insurance.coverage.reference value CLAIMS_INSURANCE from claims fhir resource
-print(clmsdataTransformer['insurance'][0]['coverage']['reference'])
-
-
-# pulling key item.sequence value CLAIMS_ITEMS from claims fhir resource
-#print(clmsdataTransformer['item'][0]['sequence'])
-
-# pulling key item.careTeamSequence value CLAIMS_ITEMS from claims fhir resource
-#print(clmsdataTransformer['item'][0]['careTeamSequence'][0])
-
-# pulling key item.productOrService.coding.code value CLAIMS_ITEMS from claims fhir resource
-#print(clmsdataTransformer['item'][0]['productOrService'][0]['coding']['code'])
-
-# pulling key item.servicedDate  value CLAIMS_ITEMS from claims fhir resource
-print(clmsdataTransformer['item'][0]['servicedDate'])
-
-# pulling key item.unitPrice.value value CLAIMS_ITEMS from claims fhir resource
-#print(clmsdataTransformer['item'][0]['unitPrice'][0]['value']['code'])
-
-# pulling key item.unitPrice.currency value CLAIMS_ITEMS from claims fhir resource
-#print(clmsdataTransformer['item'][0]['unitPrice'][0]['currency'])
-
-#pulling key net.value value PROVIDER_LOCATION from claims fhir resource
-#print(clmsdataTransformer['net'][0]['value'])
-
-#pulling key net.currency value PROVIDER_LOCATION from claims fhir resource
-#print(clmsdataTransformer['net'][0]['currency'])
-
-#pulling key total.value value CLAIMS_TOTAL from claims fhir resource
+#TOTAL
+#pulling key vaalue BillAmount from claims total.value fhir resource
 print(clmsdataTransformer['total'][0]['value'])
 
