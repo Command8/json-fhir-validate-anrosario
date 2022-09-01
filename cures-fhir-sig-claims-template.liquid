@@ -107,11 +107,11 @@
           ]
         }
       ],
-      "date": "{{msg.ServiceFromDate /Date_of_Service | date: "yyyy-MM-dd"}}",
+      "date": "{{msg.ServiceFromDate_Date_of_Service | date: "yyyy-MM-dd"}}",
       "procedureCodeableConcept": {
         "coding": [
           {
-            "code": "{{msg.ProcedureCode /CPTCode_Primary}}"
+            "code": "{{msg.ProcedureCode_CPTCode_Primary}}"
           }
         ]
       }
@@ -127,7 +127,7 @@
             ]
           }
         ],
-        "date": "{{msg.ServiceFromDate /Date_of_Service | date: "yyyy-MM-dd"}}",
+        "date": "{{msg.ServiceFromDate_Date_of_Service | date: "yyyy-MM-dd"}}",
         "procedureCodeableConcept": {
           "coding": [
             {

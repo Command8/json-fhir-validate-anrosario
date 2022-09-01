@@ -112,13 +112,13 @@ clmsdataTransformer= getResourceFile(clmsfileoutput)
 
 #RESOURCETYPE
 # pulling key value RESOURCE_TYPE from claim fhir resource
-print(clmsdataTransformer['resourcesType'])
+print(clmsdataTransformer['resourceType'])
 
 #IDENTIFIER
 # pulling key value CLAIM_NUMBER from claim identifier.use fhir resource
-print(clmsdataTransformer['identifier'][0]['use'])
+print(clmsdataTransformer['identifier']['use'])
 # pulling key value CLAIM_NUMBER from claim identifier.value fhir resource
-print(clmsdataTransformer['identifier'][0]['value'])
+print(clmsdataTransformer['identifier']['value'])
 
 #STATUS
 #pulling key value ClaimPaymentStatus from claim.status  fhir resource // R!  active | cancelled | draft | entered-in-error
@@ -126,14 +126,14 @@ print(clmsdataTransformer['status'])
 
 #PATIENT
 # pulling key value CENSEO_ID identifer.use Claim patient.reference fhir resource
-print(clmsdataTransformer['patient'][0]['reference'])
+print(clmsdataTransformer['patient']['reference'])
 
 #BILLABLEPERIOD
 # pulling key value BILLABLE_PERIOD CLAIM from claim.billablePeriod.start fhir resource
 #ServiceFromDate_Date_of_Service
-print(clmsdataTransformer['billablePeriod'][0]['start']) 
+print(clmsdataTransformer['billablePeriod']['start']) 
 # pulling key value BILLABLE_PERIOD CLAIM ServiceThruDate from claim.billablePeriod.end fhir resource
-print(clmsdataTransformer['billablePeriod'][0]['end']) 
+print(clmsdataTransformer['billablePeriod']['end']) 
 
 #CREATED
 # pulling key value status ClaimEntryDate from claim fhir resource
@@ -141,23 +141,23 @@ print(clmsdataTransformer['created'])
 
 #ENTERER
 # pulling key value status Provider_ID from claim enterer.reference fhir resource
-print(clmsdataTransformer['enterer']) 
+print(clmsdataTransformer['enterer']['reference']) 
 
 #PROVIDER
 # pulling key value status Provider_ID from claim provider.reference fhir resource
-print(clmsdataTransformer['provider']) 
+print(clmsdataTransformer['provider']['reference']) 
 
 #PRIORITY
 # pulling key value RenderingProviderNPI from claim priority.coding.code fhir resource //R!  Desired processing ugency"
-print(clmsdataTransformer['priority'][0]['coding'][0]['code'])
+print(clmsdataTransformer['priority']['coding'][0]['code'])
 
 #PRESCRIPTION
 # pulling key value prescription.reference from claim prescription.reference fhir resource //R!  Desired processing ugency"
-print(clmsdataTransformer['prescription'][0]['reference'])
+print(clmsdataTransformer['prescription']['reference'])
 
 #FACILITY
 #pulling key PlaceOfServicevalue CLAIM_TYPE from claim facility.identifier.value fhir resource
-print(clmsdataTransformer['facility'][0]['identifier'][0]['value'])
+print(clmsdataTransformer['facility']['identifier']['value'])
 
 #CARETEAM
 #pulling key value status Provider_ID from claim careTeam.sequence value fhir resource
@@ -168,33 +168,35 @@ print(clmsdataTransformer['careTeam'][0]['provider'])
 #DIAGNOSIS
 # pulling key value  from claim diagnosis.sequence fhir resource
 print(clmsdataTransformer['diagnosis'][0]['sequence'])
-# pulling key DX_1 value from claim diagnosis.diagnosisCodeableConcept.coding.code fhir resource
-print(clmsdataTransformer['diagnosis'][0]['diagnosisCodeableConcept']['coding']['code'])
-print(clmsdataTransformer['diagnosis'][0]['sequence'])
+# pulling key DX_1 value from claim diagnosis.sequence.diagnosisCodeableConcept.coding.code fhir resource
+print(clmsdataTransformer['diagnosis'][0]['diagnosisCodeableConcept']['coding'][0]['code'])
+
 # pulling key DX_2 value from claim diagnosis.diagnosisCodeableConcept.coding.code fhir resource
-print(clmsdataTransformer['diagnosis'][0]['diagnosisCodeableConcept']['coding']['code'])
-print(clmsdataTransformer['diagnosis'][0]['sequence'])
+print(clmsdataTransformer['diagnosis'][1]['diagnosisCodeableConcept']['coding'][0]['code'])
+
 # pulling key DX_3 value from claim diagnosis.diagnosisCodeableConcept.coding.code fhir resource
-print(clmsdataTransformer['diagnosis'][0]['diagnosisCodeableConcept']['coding']['code'])
+print(clmsdataTransformer['diagnosis'][2]['diagnosisCodeableConcept']['coding'][0]['code'])
 
 #PROCEDURE
 #pulling key value  "1"   from claim procedure.sequence fhir resource
-print(clmsdataTransformer['prodecure'][0]['sequence']) 
+print(clmsdataTransformer['procedure'][0]['sequence']) 
 #pulling key value  "primary" from claim procedure.type.coding.code fhir resource
-print(clmsdataTransformer['procedure'][0]['type']['coding']['code'])
+print(clmsdataTransformer['procedure'][0]['type'][0]['coding'][0]['code'])
 #pulling key value ServiceFromDate from claim.prodecure.date fhir resource
+
 print(clmsdataTransformer['procedure'][0]['date'])
 #pulling key value CPTCode_Primary from claim fhir resource
-print(clmsdataTransformer['procedure'][0]['procedureCodeableConcept']['coding']['code'])
+print(clmsdataTransformer['procedure'][0]['procedureCodeableConcept']['coding'][0]['code'])
 
 # pulling key value "2" from claim procedure.sequence fhir resource
-print(clmsdataTransformer['prodecure'][0]['sequence']) 
-#pulling key value  "secondary" from claim procedure.type.coding.code fhir resource
-print(clmsdataTransformer['procedure'][0]['procedureCodeableConcept']['coding']['code'])
-#pulling key value ServiceFromDate from claim.prodecure.date fhir resource
-print(clmsdataTransformer['procedure'][0]['date'])
+print(clmsdataTransformer['procedure'][1]['sequence']) 
 #pulling key value ProcedureCode2 from claim fhir resource
-print(clmsdataTransformer['procedure'][0]['procedureCodeableConcept']['coding']['code'])
+#pulling key value  "secondary" from claim procedure.type.coding.code fhir resource
+print(clmsdataTransformer['procedure'][1]['procedureCodeableConcept']['coding'][0]['code'])
+#pulling key value ServiceFromDate from claim.prodecure.date fhir resource
+#print(clmsdataTransformer['procedure'][1]['date'])
+
+
 
 #INSURANCE
 # pulling key value "1" from claim insurance.sequence fhir resource
@@ -206,5 +208,5 @@ print(clmsdataTransformer['insurance'][0]['coverage']['reference'])
 
 #TOTAL
 #pulling key vaalue BillAmount from claims total.value fhir resource
-print(clmsdataTransformer['total'][0]['value'])
+print(clmsdataTransformer['total']['value'])
 

@@ -23,10 +23,10 @@
     },
     "created": "2022-08-01",
     "enterer": {
-        "reference": "Practitioner/1234"
+        "reference": "Practitioner/abc1234"
     },
     "provider": {
-        "reference": "Practitioner/1234"
+        "reference": "Practitioner/abc1234"
     },
     "priority": {
         "coding": [
@@ -36,7 +36,7 @@
         ]
     },
     "prescription": {
-        "reference": "MedicationRequest/1234"
+        "reference": "MedicationRequest/"
     },
     "payee": {
         "type": {
@@ -57,7 +57,7 @@
         {
             "sequence": 1,
             "provider": {
-                "reference": "Practitioner/1234"
+                "reference": "Practitioner/abc1234"
             }
         }
     ],
@@ -104,7 +104,15 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "date": "2022-08-12",
+            "procedureCodeableConcept": {
+                "coding": [
+                    {
+                        "code": "64405"
+                    }
+                ]
+            }
         },
         {
             "sequence": 2,
@@ -117,6 +125,7 @@
                     ]
                 }
             ],
+            "date": "2022-08-12",
             "procedureCodeableConcept": {
                 "coding": [
                     {
@@ -131,7 +140,7 @@
             "sequence": 1,
             "focal": true,
             "coverage": {
-                "reference": "Coverage/1234"
+                "reference": "Coverage/"
             }
         }
     ],
