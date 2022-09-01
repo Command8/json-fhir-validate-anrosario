@@ -51,7 +51,7 @@
     "PaidDate": "",
     "PatientPayPortion": "",
     "PlaceOfService": "Home",
-    "ProcedureCode /CPTCode_Primary": "64405",
+    "ProcedureCode_CPTCode_Primary": "64405",
     "ProcedureCode2": "64450",
     "ProductKey": "",
     "Provider_ID": "abc1234",
@@ -62,8 +62,8 @@
     "RevenueCode": "",
     "RightSeverity": "",
     "ServiceCategory": "",
-    "ServiceFromDate /Date_of_Service": "08/12/2022",
-    "ServiceThruDate": "",
+    "ServiceFromDate_Date_of_Service": "08/12/2022",
+    "ServiceThruDate": "08/13/2022",
     "Specialty_Code": "",
     "Specialty_Name": ""
 }

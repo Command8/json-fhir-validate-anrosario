@@ -86,7 +86,7 @@ print(ClaimsDataInput['PaidAmount'])
 print(ClaimsDataInput['PaidDate'])
 print(ClaimsDataInput['PatientPayPortion'])
 print(ClaimsDataInput['PlaceOfService'])
-print(ClaimsDataInput['ProcedureCode /CPTCode_Primary'])
+print(ClaimsDataInput['ProcedureCode_CPTCode_Primary'])
 print(ClaimsDataInput['ProcedureCode2'])
 print(ClaimsDataInput['ProductKey'])
 print(ClaimsDataInput['RenderingProviderSpecialty'])
@@ -94,7 +94,7 @@ print(ClaimsDataInput['ResponseValue'])
 print(ClaimsDataInput['RevenueCode'])
 print(ClaimsDataInput['RightSeverity'])
 print(ClaimsDataInput['ServiceCategory'])
-print(ClaimsDataInput['ServiceFromDate /Date_of_Service'])
+print(ClaimsDataInput['ServiceFromDate_Date_of_Service'])
 print(ClaimsDataInput['ServiceThruDate'])
 print(ClaimsDataInput['Specialty_Code'])
 print(ClaimsDataInput['Specialty_Name'])
@@ -154,6 +154,12 @@ print(clmsdataTransformer['priority']['coding'][0]['code'])
 #PRESCRIPTION
 # pulling key value prescription.reference from claim prescription.reference fhir resource //R!  Desired processing ugency"
 print(clmsdataTransformer['prescription']['reference'])
+
+#PAYEE
+# pulling key value payee.reference from claim prescription.reference fhir resource
+print(clmsdataTransformer['payee']['type']['coding'][0]['code'])
+print(clmsdataTransformer['payee']['type']['coding'][0]['display'])
+
 
 #FACILITY
 #pulling key PlaceOfServicevalue CLAIM_TYPE from claim facility.identifier.value fhir resource
