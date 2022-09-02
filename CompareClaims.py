@@ -202,8 +202,6 @@ print(clmsdataTransformer['procedure'][1]['procedureCodeableConcept']['coding'][
 #pulling key value ServiceFromDate from claim.prodecure.date fhir resource
 #print(clmsdataTransformer['procedure'][1]['date'])
 
-
-
 #INSURANCE
 # pulling key value "1" from claim insurance.sequence fhir resource
 print(clmsdataTransformer['insurance'][0]['sequence'])

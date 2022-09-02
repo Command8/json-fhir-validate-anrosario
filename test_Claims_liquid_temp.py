@@ -1,7 +1,7 @@
 import unittest
 import json
 
-trans_claims_resource = '  "resourceType" : "Claim","identifier" : {"use": "official","value": "{{msg.ClaimNumber}}",},'
+trans_claims_resource = '"resourceType" : "Claim","identifier" : {"use": "official","value": "{{msg.ClaimNumber}}",},'
 trans_claims_status = '"status" : "active",' #required
 trans_claims_type = '"type": {"coding": [{"system": "http://terminology.hl7.org/CodeSystem/claim-type","code": "institutional"//Should this be institutional or professional}]},'
 #trans_claims_subtype = More granular claim type
