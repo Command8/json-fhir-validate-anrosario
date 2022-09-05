@@ -1,0 +1,394 @@
+Worksheet Name,Data.Data Element,Data.Description,Data.Domain,Data.FHIR,FHIR Resource Name,Data.Comments,Data.version,Data.Comments1,Data.USCDI,Data.HL7 Segment
+Ancillary Marts,AbnormalIndicator,Indicator if the lab result was abnormal,[SecondaryCenseoMarts].[Rubix].[FactAncillary_CompletedByLabs],Observation.interpretation,Observation,,,"high,low,normal etc",NA,
+Consol Client DB,AlternateMemberID_1,AlternateMemberID 1,Member,NA,TBD,Alternate ids,,L2 - Subscriber/Member Identifier,NA,
+Consol Client DB,AlternateMemberID_2,AlternateMemberID 2,Member,NA,TBD,,,L2 - Subscriber/Member Identifier,NA,
+Consol Client DB,Barcode/ SubscriberID,"Shown on their ID card, which will be used to file a claim",Member,Practitioner.identifier,Practitioner,Payor Subscriber ID,"v1
+
+
+v2","If part of ""care team members""","Care Team Members
+or
+Provider Identifier",IN2-26
+Ancillary Marts,CarePlan,Care plan for DEE,[SecondaryCenseoMarts].[Rubix].[FactAncillary_CompletedByLabs],Observation.basedOn,Observation,,,references CarePlan,NA,
+Consol Client DB,CenseoID,Unique ID for member provided by Signify,Eligibility,Coverage.subscriberId,Coverage,,,,NA,
+Consol Client DB,CenseoID,Signify assigned ID used to identify member,Member,Patient.identifier,Patient,Internal,,L2 - Identifier,NA,PID2
+Consol Client DB,CenseoID,Unique ID for member provided by Signify,Provider,NA,TBD,,,,NA,
+Consol Client DB,CMSID / HIC_Number,Member?s Health Insurance Claims Number from CMS,Member,Coverage.subscriberId,Coverage,,,,NA,
+Consol Client DB,Coverage_Start_Date,Start date for member eligibility in the current plan,Eligibility,Coverage.period,Coverage,,,L2 - Coverage Period,NA,
+Consol Client DB,Coverage_Stop_Date,Planned stop date for member eligibility,Eligibility,Coverage.period,Coverage,,,L2 - Coverage Period,NA,
+Coding Marts,DiagnosisCode,Diagnosis code,[SecondaryCenseoMarts].[Rubix].[DimDiagnosis],Condition.code,Condition,,v1,All SNOMED?,Problems,
+Coding Marts,DiagnosisCodeDecimal,Diagnosis code,[SecondaryCenseoMarts].[Rubix].[DimDiagnosis],Condition.code,Condition,,v1,All SNOMED?,Problems,
+Coding Marts,DiagnosisFilter,Filter can be Conditionally/Never/Always,[SecondaryCenseoMarts].[Rubix].[DimDiagnosis],Condition.clinicalStatus,Condition,active/recurrence/relapse/inactive/remission/resolved?,,,,
+Coding Marts,DiagnosisFullDescription,Full description of diagnosis,[SecondaryCenseoMarts].[Rubix].[DimDiagnosis],NA,TBD,,v1,All SNOMED?,Problems,
+Coding Marts,DiagnosisLongDescription,Long description of diagnosis,[SecondaryCenseoMarts].[Rubix].[DimDiagnosis],NA,TBD,,v1,All SNOMED?,Problems,
+Coding Marts,DiagnosisShortDescription,Short description of diagnosis,[SecondaryCenseoMarts].[Rubix].[DimDiagnosis],NA,TBD,,v1,All SNOMED?,Problems,
+Coding Marts,DiagnosisVersionCode,ICD version,[SecondaryCenseoMarts].[Rubix].[DimDiagnosis],NA,TBD,"SNOMED, ICD-9/10 built into ValueSet",v1,All SNOMED?,Problems,
+Coding Marts,DiagnosisVersionDescription,ICD-9/ICD-10,[SecondaryCenseoMarts].[Rubix].[DimDiagnosis],NA,TBD,,v1,All SNOMED?,Problems,
+Coding Marts,DimDiagnosisKey,Diagnosis key,[SecondaryCenseoMarts].[Rubix].[DimDiagnosis],NA,TBD,,,,,
+Coding Marts,DimDiagnosisKey,Key to Dim Diagnosis for diagnosis details,[SecondaryCenseoMarts].[Rubix].[FactCodingDiagnosis],NA,TBD,,,,,
+Consol Client DB,Ethnicity,Member's Ethnicity,Member,patient.,Patient,,,Patient Demographics,Ethnicity,PID-22-1
+Coding Marts,EvaluationKey,Evaluation key ties back to the evaluation for member details,[SecondaryCenseoMarts].[Rubix].[FactCodingDiagnosis],NA,TBD,,,,,
+Ancillary Marts,Exception,Any exception on the lab performed,[SecondaryCenseoMarts].[Rubix].[FactAncillary_CompletedByLabs],Na,TBD,,,,NA,
+Consol Client DB,FacilityName,Facility Name,Provider,Group.managingEntity.name,TBD,,,L2 - Encounter Location,NA,
+Consol Client DB,Group,Plan Group Common Name,Member,class,TBD,,,,NA,IN1-2-1
+Consol Client DB,GroupIdentifier,Plan Group Identifier,Member,class.type,TBD,,,L2 - Group Number,NA,
+Ancillary Marts,HasInvalidResult,Flag to indicate if a lab result was invalid,[SecondaryCenseoMarts].[Rubix].[FactAncillary_CompletedByLabs],,TBD,,,,NA,
+Consol Client DB,HICN,Member CMS ID,Eligibility,Coverage.identifier,Coverage,,,L2 - Subscriber/Member Identifier,NA,
+Consol Client DB,HPLAN,Contract Number (H Plan). This isn?t required if MMR is provided.,Member,NA,TBD,,,,NA,IN1-2
+Consol Client DB,InternalGroupIdentifier,Custom Client Field,Member,Na,TBD,,,,NA,
+Consol Client DB,InternalGroupName,Custom Client Field,Member,class.name,TBD,,,,NA,
+Consol Client DB,IPA,IPA Identifier (Independent Practice Association),Member,Practitioner.identifier,Practitioner,,"v1
+
+
+
+v2","If part of ""care team members""","Care Team Members
+or
+Provider Identifier",IN1-3-0
+Consol Client DB,IPA_Identifier,IPA Common Name,Member,Practitioner.name,Practitioner,,"v1
+
+
+v2","If part of ""care team members""","Care Team Members
+or
+Provider Name",IN1-2-1
+Ancillary Marts,IsBillable,Flag to indicate if the lab is billable,[SecondaryCenseoMarts].[Rubix].[FactAncillary_CompletedByLabs],NA,TBD,,,,NA,
+Ancillary Marts,lab_results,Lab results,[SecondaryCenseoMarts].[Rubix].[FactAncillary_CompletedByLabs],Observation.value,TBD,,v1,,Laboratory.Values/Results,
+Ancillary Marts,LabResultsDateReceived,Date the lab results were received,[SecondaryCenseoMarts].[Rubix].[FactAncillary_CompletedByLabs],"Observation.effective,
+Observation.effectiveDateTime,
+Observation.effectiveInstant or Observation.valueDateTime",Observation,,,Is this date/time performed or just received to DB?,NA,
+Ancillary Marts,LeftSeverity,PAD left severity,[SecondaryCenseoMarts].[Rubix].[FactAncillary_CompletedByLabs],NA,TBD,,,"These seem like observations themselves? severity = value, Left/Right Severity = code?",NA,
+Consol Client DB,LongTermCare,Flag for long term care,Member,NA,TBD,,,,NA,
+Consol Client DB,LPO,LPO Identifier (Local Physician Organization),Member,Practitioner.identifier,Practitioner,,"v1
+
+
+
+v2","If part of ""care team members""","Care Team Members
+or
+Provider Identifier",F
+Consol Client DB,LPO_Identifier,LPO Common Name,Member,Practitioner.name,Practitioner,,"v1
+
+
+v2","If part of ""care team members""","Care Team Members
+or
+Provider Name",
+Consol Client DB,MBI,Medicare Beneficiary Identifier,Member,,TBD,,,L2 - MBI,NA,PID.3.1
+Consol Client DB,Member_Address1,Address line 1,Member,Patient.address,Patient,,v1,Patient Demographics,Current Address,PID11.0
+Consol Client DB,Member_Address2,Address line 2,Member,Patient.address,Patient,,v1,Patient Demographics,Current Address,PID11.1
+Consol Client DB,Member_Cell,Cell phone,Member,patient.telecom,Patient,,v1,Patient Demographics,Phone Number and Phone Number Type,
+Consol Client DB,Member_City,City,Member,Patient.address,Patient,,v1,Patient Demographics,Current Address,PID11.2
+Consol Client DB,Member_County,County,Member,contact.address,Patient,,v1,Patient Demographics,Current Address,PID-12
+Consol Client DB,Member_Current_Insurer_Id,Custom Client Field,Member,NA,TBD,,,,NA,
+Consol Client DB,Member_Date_of_Birth,Member?s date of birth,Member,patient.birthdate,Patient,,v1,Patient Demographics,Date of Birth,
+Consol Client DB,Member_Email,Email Address,Member,patient.telecom,Patient,,v1,Patient Demographics(telecom),Email Address,PID-40-0
+Consol Client DB,Member_First_Name,First name of the member,Member,Patient.name,Patient,,v1,Patient Demographics,First Name,PID-5-1
+Consol Client DB,Member_Gender,"Member?s Gender (1 = Male, 2 = Female, 3 = Other)",Member,Patient.name,Patient,,v1,Patient Demographics,Birth Sex,PID-8
+Consol Client DB,Member_Group_Number,Custom Client Field,Member,class.value,TBD,,,L2 - Group Number,NA,IN1-3-0
+Consol Client DB,Member_Last_Name,Last name of the member,Member,Patient.name,Patient,,v1,Patient Demographics,Last Name,PID-5-3
+Consol Client DB,Member_Mail_Address1,Mailing Address line 1,Member,Patient.address,Patient,,v1,Patient Demographics,Current Address,
+Consol Client DB,Member_Mail_Address2,Mailing Address line 2,Member,Patient.address,Patient,,v1,Patient Demographics,Current Address,
+Consol Client DB,Member_Mail_City,Mailing City,Member,Patient.address,Patient,,v1,Patient Demographics,Current Address,
+Consol Client DB,Member_Mail_State,Mailing State,Member,contact.address,Patient,Could be a P.O. Box,v1,Patient Demographics,Current Address,
+Consol Client DB,Member_Mail_Zip,Mailing zip code,Member,Patient.address,Patient,Could be a P.O. Box,v1,Patient Demographics,Current Address,
+Consol Client DB,Member_Middle_Name,Member middle name,Member,Patient.name,Patient,,v1,Patient Demographics,Middle Name,PID-5-2
+Consol Client DB,Member_Number,Unique ID for member provided by Client (Ties to member record in member file),Eligibility,patient.identifier,Patient,,,L2 - Identifier,NA,PID2
+Consol Client DB,Member_Secondary_Contact,Alternate member phone number,Member,Contact.address,Patient,,v1,Patient Demographics,Phone Number and Phone Number Type,
+Consol Client DB,Member_SSN,Social Security Number,Member,NA,TBD,,,L2 - Patient SSN,NA,PID19
+Consol Client DB,Member_State,State,Member,contact.address,Patient,Residential Address,v1,Patient Demographics,Current Address,PID-11-4
+Consol Client DB,Member_Telephone,Primary member phone number,Member,patient.telecom,Patient,,v1,Patient Demographics,Phone Number and Phone Number Type,PID-13-1 (Home)
+Consol Client DB,Member_Zip,5 or 9 digit zip code zip code,Member,Patient.address,Patient,Residential Address,v1,Patient Demographics,Current Address,PID-11-5
+Evaluation Response,ODSAnswerID,ID to connect to the evaluation answer,[SecondaryCenseoODS].[ods].[EvaluationResponses],"Evaluation response incldues diagnosis, medication, lab results and height, weight, BP, LDL, HDL Cholestrol etc",TBD,,,,,
+Coding Marts,ODSDiagnosisID,ODS diagnosis id,[SecondaryCenseoMarts].[Rubix].[DimDiagnosis],NA,TBD,,,,,
+Evaluation Response,ODSEvaluationID,ID to connect back to the evaluation,[SecondaryCenseoODS].[ods].[EvaluationResponses],"Evaluation response incldues diagnosis, medication, lab results and height, weight, BP, LDL, HDL Cholestrol etc",TBD,,,,,
+Evaluation Response,ODSEvaluationResponseID,key,[SecondaryCenseoODS].[ods].[EvaluationResponses],"Evaluation response incldues diagnosis, medication, lab results and height, weight, BP, LDL, HDL Cholestrol etc",TBD,,,,,
+Evaluation Response,ODSQuestionID,ID to connect to the evaluation question,[SecondaryCenseoODS].[ods].[EvaluationResponses],"Evaluation response incldues diagnosis, medication, lab results and height, weight, BP, LDL, HDL Cholestrol etc",TBD,,,,,
+Consol Client DB,OfficeContactName,,Provider,practitioner.name,Practitioner,changed from P.address to P.name,"v1
+
+
+v2","If part of ""care team members""","Care Team Members
+or
+Provider Name",
+Consol Client DB,Patient_Nk_Key,Internal member ID for the plan,Member,NA,TBD,,,,NA,PID-3-0
+Consol Client DB,PCP_ID,Primary Care Physician Plan Provider ID,Member,Practitioner.identifier,Practitioner,,"v1
+
+
+v2","If part of ""care team members""","Care Team Members
+or
+Provider Identifier",PD1-4-1
+Consol Client DB,PCP_Location_ID,Unique location identification number which provider engages with patients.,Eligibility,practioner.Address,Practitioner,,,,NA,
+Consol Client DB,PCP_Provider_ID,Provider ID,Eligibility,Practitioner.identifier,Practitioner,changed from P.name to practioner.identifier,"v1
+
+
+v2","If part of ""care team members""","Care Team Members
+or
+Provider Identifier",
+Consol Client DB,Plan_Number,Unique Plan Code,Eligibility,coverage.identifier,Coverage,IN1 or GT1,,L2 - Group Number,NA,IN1-2-1
+Consol Client DB,PlanBenefitPackageID,MA Plan Benefit Package ID. This isn?t required if MMR is provided,Member,Na,TBD,,,,NA,
+Consol Client DB,PlanLocation,Plan Location name or code,Member,,TBD,,,,NA,
+Consol Client DB,PlanType,Custom Client Field,Eligibility,Coverage.class.type,Coverage,,,L2 - Coverage Type,NA,IN1-15-0
+Consol Client DB,PreferredSpokenLanguage,Member's preferred spoken language,Member,Patient.language,Patient,,,Patient Demographics,Preferred Langauge,PID-15-3
+Consol Client DB,PrimaryLocationID,,Provider,practioner.Address,Practitioner,,,L2 - Provider Location,NA,
+Ancillary Marts,ProductKey,Lab Product,[SecondaryCenseoMarts].[Rubix].[FactAncillary_CompletedByLabs],"Observation.code
+Observation.component?",Observation,"CKD
+Retinal Exam
+FOBT
+HbA1c
+HomeAccess Microalbumin
+Bone Density
+PAD
+Aetna PAD
+A1c POC",v1,"LOINC, for example.
+If test has multiple observations, they are components (ie CBC has like 8 ""results"" that come with it.)",Laboratory.Tests,
+Consol Client DB,ProductName/ LOB,Product Common Name or Line of business,Member,,TBD,,,,NA,
+Consol Client DB,Provider_Address1,Address line 1 of the Provider,Provider,Practitioner.Address,Practitioner,,,L2 - Provider Location,NA,
+Consol Client DB,Provider_Address2,Address line 2 of the Provider,Provider,Practitioner.Address,Practitioner,,,L2 - Provider Location,NA,
+Consol Client DB,Provider_Address3,Address line 3 of the Provider,Provider,Practitioner.Address,Practitioner,,,L2 - Provider Location,NA,
+Consol Client DB,Provider_City,City name,Provider,Practitioner.Address,Practitioner,,,L2 - Provider Location,NA,
+Consol Client DB,Provider_Contact,Primary contact for practice/facility,Provider,practionerrole.telecom,PractitionerRole,,,L2 - Provider Telecom Information,NA,
+Consol Client DB,Provider_County,County name,Provider,Practitioner.Address,Practitioner,,,L2 - Provider Location,NA,
+Consol Client DB,Provider_Email,Main office email address,Provider,Patient.?telecom.?where(system='email'),Practitioner,,,L2 - Provider Telecom Information,NA,
+Consol Client DB,Provider_Fax,Fax Number,Provider,practionerrole.telecom,PractitionerRole,,,L2 - Provider Telecom Information,NA,
+Consol Client DB,Provider_FirstName,Primary care physician first name,Member,Practitioner.name,Practitioner,,"v1
+
+
+v2","If part of ""care team members""","Care Team Members
+or
+Provider Name",PD1-4-3
+Consol Client DB,Provider_FirstName,Provider?s first name,Provider,Practitioner.name,Practitioner,,"v1
+
+
+v2","If part of ""care team members""","Care Team Members
+or
+Provider Name",
+Consol Client DB,Provider_GroupID,Identification number for the group practice with which the provider is affiliated,Provider,Group.managingEntity.identifier,TBD,May be able to leverage Provider Identifier here but it certainly isn't expected to have this information available,"v1
+
+
+v2","If part of ""care team members""","Care Team Members
+or
+Provider Identifier",
+Consol Client DB,Provider_GroupName,Name of group practice with which the provider is affiliated,Provider,Group.name,TBD,May be able to leverage Provider Identifier here but it certainly isn't expected to have this information available,"v1
+
+
+v2","If part of ""care team members""","Care Team Members
+or
+Provider Identifier",
+Consol Client DB,Provider_ID,Internal Plan ID,Provider,practioner.identifier,Practitioner,changed from P.name to practioner.identifier,"v1
+
+
+v2","If part of ""care team members""","Care Team Members
+or
+Provider Identifier",
+Consol Client DB,Provider_LastName,Primary care physician last name,Member,Practitioner.name,Practitioner,,"v1
+
+
+v2","If part of ""care team members""","Care Team Members
+or
+Provider Name",PD1-4-2
+Consol Client DB,Provider_LastName,Provider?s last name,Provider,Practitioner.name,Practitioner,,"v1
+
+
+v2","If part of ""care team members""","Care Team Members
+or
+Provider Name",
+Consol Client DB,Provider_Middle_Initial,Provider?s Middle Initial,Provider,Practitioner.name,Practitioner,changed from P.address to P.name,,L2 - Provider Location,NA,
+Consol Client DB,Provider_NPI,National Provider Identifier,Provider,practitioner.identifier,Practitioner,changed from P.name to practioner.identifier,"v1
+
+
+v2","If part of ""care team members""","Care Team Members
+or
+Provider Identifier",
+Consol Client DB,Provider_PhonePrimary,Primary Phone number,Provider,practionerrole.telecom,PractitionerRole,,,L2 - Provider Telecom Information,NA,
+Consol Client DB,Provider_PhoneSecondary,Secondary Phone number,Provider,practionerrole.telecom,PractitionerRole,,,L2 - Provider Telecom Information,NA,
+Consol Client DB,Provider_PIN,,Provider,practioner.identifier,Practitioner,May be able to leverage Provider Identifier here but it certainly isn't expected to have this information available,"v1
+
+
+v2","If part of ""care team members""","Care Team Members
+or
+Provider Identifier",
+Consol Client DB,Provider_Specialty_Code,CMS Speciality Code,Provider,practionerrole.code,PractitionerRole,,,L2 - Provider Role,NA,
+Consol Client DB,Provider_Specialty_Desc,Provider's Primary Speciality Description,Provider,practionerrole.Speciality,PractitionerRole,,,L2 - Provider Role,NA,
+Consol Client DB,Provider_State,2 character state abbreviation,Provider,Practitioner.Address,Practitioner,,,L2 - Provider Location,NA,
+Consol Client DB,Provider_TaxID,Provider's Tax ID,Provider,Practitioner.identifier,Practitioner,May be able to leverage Provider Identifier here but it certainly isn't expected to have this information available,"v1
+
+
+v2","If part of ""care team members""","Care Team Members
+or
+Provider Identifier",
+Consol Client DB,Provider_Taxonomy_Code,NPPES Taxonomy Code,Provider,valueset-provider-taxonomy valueset-provider-taxonomy,TBD,May be able to leverage Provider Identifier here but it certainly isn't expected to have this information available,"v1
+
+
+v2","If part of ""care team members""","Care Team Members
+or
+Provider Identifier",
+Consol Client DB,Provider_ZipCode,Provider zip code,Provider,Practitioner.Address,Practitioner,,,L2 - Provider Location,NA,
+Consol Client DB,ProviderLocationID,,Provider,practioner.Address,Practitioner,,,L2 - Provider Location,NA,
+Evaluation Response,ResponseValue,Response recorded by the provider,[SecondaryCenseoODS].[ods].[EvaluationResponses],"Evaluation response incldues diagnosis, medication, lab results and height, weight, BP, LDL, HDL Cholestrol etc",TBD,,,,,
+Ancillary Marts,RightSeverity,PAD right severity,[SecondaryCenseoMarts].[Rubix].[FactAncillary_CompletedByLabs],NA,TBD,,,see above,NA,
+Consol Client DB,SameAddress,Flag to indicate mailing address is same as physical address,Member,NA,TBD,,,,NA,
+Consol Client DB,SecondaryPhone,Secondary phone,Member,patient.telecom,Patient,,v1,Patient Demographics,Phone Number and Phone Number Type,PID-14-1 (Business)
+Consol Client DB,Suffix,Suffix of a member,Member,patient.name,Patient,,,Patient Demographics,Suffix,PID-5-4
+Consol Client DB,VillageHealth,Specific to Humana,Member,NA,TBD,,,,NA,
+Evaluation Response,,"Evaluation response incldues diagnosis, medication, lab results and height, weight, BP, LDL, HDL Cholestrol etc",,,TBD,,,,,
+CaseManagement,,,,Coverage.payor,Coverage,,,,Health insurance is not included in USCDI (L2 for future versions),
+CaseManagement,,,,Coverage.subscriberID,Coverage,L2 for future versions,,,NA,
+CaseManagement,,,,Same as above?,TBD,L2 for future versions,,,NA,
+CaseManagement,,,,"Coverage.subscriber, or Coverage.beneficiary",Coverage,,V1/2,,"First Name
+
+",
+CaseManagement,,,,"Coverage.subscriber, or Coverage.beneficiary",Coverage,,V1/2,,Last Name,
+CaseManagement,,,,Coverage.class.value,Coverage,,,,nA,
+CaseManagement,,,,encounter.period,Encounter,,v2,,Encounter Time,
+CaseManagement,,,,Encounter.period,Encounter,,v2,,Encounter Time,
+CaseManagement,,,,Practioner.name,Practitioner,,v2,,Provider Name,
+CaseManagement,,,,practioner.identifier,Practitioner,,,,Provider Identifier,
+CaseManagement,,,,Documentreference,TBD,Can be identied with various types,v1/2,,Clinical Notes,
+CaseManagement,,,,Na,TBD,,,,nA,
+CaseManagement,,,,Na,TBD,,,,NA,
+CaseManagement,,,,Na,TBD,,,,NA,
+CaseManagement,,,,ReferralRequest.authoredOn,Referralrequest,,,,NA,
+OCR Demographic Output,,Vendor name. Default to ?SIGNIFY?,,,TBD,,,,NA,
+OCR Demographic Output,,Member ID for the plan,,Coverage.subscriberId,Coverage,,,,NA,
+OCR Demographic Output,,Member HIC Number or MBI,,Coverage.subscriber,Coverage,Reference(Patient) or Reference(RelatedPerson),,,NA,
+OCR Demographic Output,,First name of the member,,Coverage.subscriber,Coverage,"""""",V1/2,Patient Demographics,"First Name
+
+",
+OCR Demographic Output,,Last name of the member,,Coverage.subscriber,Coverage,"""""",V1/2,Patient Demographics,Last Name,
+OCR Demographic Output,,Middle name of the member,,Coverage.subscriber,Coverage,"""""",,Patient Demographics,,
+OCR Demographic Output,,Phone number,,patient.telecom,TBD,Reference(Patient),v1,Patient Demographics,Phone Number and Phone Number Type,
+OCR Demographic Output,,Physician NPI,,Practitioner.identifier,Practitioner,,"v1
+
+
+v2","If part of ""care team members""","Care Team Members
+or
+Provider Identifier",
+OCR Demographic Output,,Provider Primary Specialty Description,,PractitionerRole.specialty,Practitioner,,,L2 - Provider Role,NA,
+OCR Demographic Output,,Provider first name,,Practitioner.name,Practitioner,,"v1
+
+
+v2","If part of ""care team members""","Care Team Members
+or
+Provider Identifier",
+OCR Demographic Output,,Provider last name,,Practitioner.name,Practitioner,,"v1
+
+
+v3","If part of ""care team members""","Care Team Members
+or
+Provider Identifier",
+OCR Demographic Output,,Provider credentials,,Practitioner.qualification.identifier/code/period/issuer,Practitioner,"v2 table 0360, Version 2.7
+https://www.hl7.org/fhir/v2/0360/2.7/index.html","v1
+
+
+v4","If part of ""care team members""","Care Team Members
+or
+Provider Identifier",
+OCR Demographic Output,,Date of assessment,,Encounter.period,Encounter,,v2,,Encounter Time,
+OCR Demographic Output,,Scheduled assessment start time,,Encounter.period,Encounter,,v2,,Encounter Type,
+OCR Demographic Output,,Scheduled assessment end time,,Encounter.period,Encounter,,v2,,Encounter Time,
+OCR Demographic Output,,Assessment version,,Encounter.meta.versionId,Encounter,,,,Na,
+OCR Demographic Output,,Assessment identification number,,Encounter.identifier,Encounter,,,,NA,
+OCR Demographic Output,,,,Populated from Consol Client DB Member and ods.MemberInfo,TBD,,,,,
+OCR Medication Output,,Assessment identification number,,NA,TBD,,,,NA,
+OCR Medication Output,,Generic Product Identifier,,MedicationStatement.medicationCodeableConcept (1..1),MedicationStatement,"Can use known code for medication (SNOMED, probably NDC or GPI?) or use Reference(Medication) if further info needs to be shared",V1 and V2,More granular option in L2,Medication,
+OCR Medication Output,,National Drug Code,,MedicationStatement.medicationCodeableConcept (1..1),MedicationStatement,see above,V1 and V3,More granular option in L3,Medication,
+OCR Medication Output,,NDC Code description,,NA,TBD,No direct mapping. some additional information available Medication.form/amount/ingredient,V1 and V4,More granular option in L4,Medication,
+OCR Medication Output,,Date medication was last filled,,NA,TBD,,V1 and V5,More granular option in L5,Medication,
+OCR Medication Output,,Medication still being used,,MedicationStatement.status,MedicationStatement,"
+active | completed | entered-in-error | intended | stopped | on-hold | unknown | not-taken",V1 and V6,More granular option in L6,Medication,
+Client OCR Output,,Assessment identification number,,,TBD,,,,NA,
+Client OCR Output,,Question identifier,,quetionerresponse.identifier,Quetionerresponse,,,,NA,
+Client OCR Output,,Question description,,"QuestionnaireResponse.questionnaire
+",Quetionerresponse,,,,NA,
+Client OCR Output,,Assessment answer identifier,,QuestionnaireResponse.item.answer,Quetionerresponse,,,,NA,
+Client OCR Output,,Assessment answer description,,QuestionnaireResponse.item.answer.value[x]v,Quetionerresponse,,,,NA,
+Client OCR Output,,Contains the response value,,See comments,TBD,,,,NA,
+Client OCR Output,,Defines the response type;,,QuestionnaireResponse.item.answer.value[xv,Quetionerresponse,,,,NA,
+Client OCR Output,,ú Bool ú Date ú Float ú Int ú String,,,TBD,,,,,
+OCR QuestionAnswer Output,,Assessment version,,NA,TBD,,,,NA,
+OCR QuestionAnswer Output,,Question identifier,,Quetionerresponse.identifier,Quetionerresponse,,,,NA,
+OCR QuestionAnswer Output,,Question description,,"QuestionnaireResponse.questionnaire
+",Quetionerresponse,,,,NA,
+OCR QuestionAnswer Output,,Assessment answer identifier,,QuestionnaireResponse.item.answer,Quetionerresponse,,,,NA,
+OCR QuestionAnswer Output,,Assessment answer description,,QuestionnaireResponse.item.answer.value[x]v,Quetionerresponse,,,,NA,
+OCR Summary output,,File name,,NA,TBD,,,,NA,
+OCR Summary output,,Assessment Count,,NA,TBD,,,,NA,
+HEDIS,,Internal member ID for the plan,,Patient.identifier,Patient,,,,NA,
+HEDIS,,Member HIC Number or MBI,,Patient.identifier,Patient,,,,NA,
+HEDIS,,Last name of the member,,Patient.Name,Patient,,v1,Patient Demographics,Last Name,
+HEDIS,,First name of the member,,patient.Name,Patient,,v1,Patient Demographics,First Name,
+HEDIS,,Member?s date of birth (mm/dd/yyyy),,patient.birthdate,Patient,,v1,Patient Demographics,Date of Birth,
+HEDIS,,Name of provider who conducted assessment.,,Practioner.name,Practitioner,,"v1
+
+
+v2","If part of ""care team members""","Care Team Members
+or
+Provider Name",
+HEDIS,,Provider ID,,Practioner.identifier,Practitioner,,"v1
+
+
+v3","If part of ""care team members""","Care Team Members
+or
+Provider Name",
+HEDIS,,Exam date. (mm/dd/yyyy),,Encounter.period,Encounter,Reference patient,v2,,Encounter Time,
+HEDIS,,Date the assessment was conducted. (mm/dd/yyyy),,Encounter.period,Encounter,,v2,,Encounter Time,
+HEDIS,,Procedural code,,Encounter.reasonCode,Encounter,,,,,
+HEDIS,,,,Encounter.type,Encounter,,v2,,encounter type,
+HEDIS,,,,See comments,TBD,Encounter Resouce stores based on the information type,v2,,Encounter information,
+HEDIS,,,,Practionerrole.speciality,PractitionerRole,,"v1
+
+
+v2","If part of ""care team members""","Care Team Members
+or
+Provider Name",
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+A,,,,,,,,,,
