@@ -16,7 +16,7 @@ from Functions.fhir_functions import getResourceFile
 import os
 dir_path = os.path.dirname((__file__))
 
-print("////////////////////////////SNOWFLAKE(INPUT) JSON Data///////////////////////////////////////////")
+print("////////////////////////////CLAIMS SNOWFLAKE(INPUT) JSON Data///////////////////////////////////////////")
 # Open Snowflake JSON to read data to make comparisons
 
 #Loading the absolute path to be passed into function
@@ -99,7 +99,7 @@ print(ClaimsDataInput['ServiceThruDate'])
 print(ClaimsDataInput['Specialty_Code'])
 print(ClaimsDataInput['Specialty_Name'])
         
-print("////////////////////////////Transformed JSON Data///////////////////////////////////////////")
+print("////////////////////////////CLAIMS Transformed JSON Data///////////////////////////////////////////")
 # Open Transformed JSON and retrieve values
 
 #Loading the absolute path to be passed into function

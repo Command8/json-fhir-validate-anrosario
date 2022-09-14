@@ -7,10 +7,10 @@ from HCS_Reader import csvValidate
 variables = []
 
 HCS_Data = csvValidate('HCS_CombinedData.csv', 'Claims')
-print(HCS_Data)
+#print(HCS_Data)
 
 variables = openTxtfile('Output.txt')
-print(variables)
+#print(variables)
 
 
 

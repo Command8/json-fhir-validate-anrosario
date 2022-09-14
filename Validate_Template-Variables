@@ -1,0 +1,38 @@
+from asyncio.windows_events import NULL
+import csv
+import re
+from dataclasses import dataclass
+#from distutils import text_file - The distutils package is deprecated and slated for removal in Python 3.12. Use set uptools or check PEP 632 for potential alternatives
+#import os
+
+csvfilename = 'HCS_CombinedData.csv'
+fhir_resource = 'Claim'
+template = 'Output.txt'
+
+
+
+with open (csvfilename, 'r') as (dataInventory):
+    CombinedData = csv.DictReader(dataInventory)
+    dataelements = [] # empty array
+    # search for data point 
+    for row in CombinedData:
+        #print(row['Data.Domain'], row['Data.Data Element'])
+        dataelements = (row['Data.Domain'],row['Data.Data Element'],row['Data.FHIR'],row['FHIR Resource Name'])
+        if dataelements[3] == '':
+            break
+        #print(dataelements)
+        #if value in row['FHIR Resource Name']
+        elif fhir_resource == fhir_resource in row ['FHIR Resource Name']:
+            print('\n')
+            print('FHIR Resource Name: '+ dataelements[3])#, ':',  dataelements[1], ':',dataelements[2], ':',dataelements[0])
+            print('HCS Data.Data Element: '+ dataelements[1])
+            print('Data.FHIR:  '+ dataelements[2])
+            print('Data.Domain: '+ dataelements[0]+'\n')
+                
+                    
+
+
+
+
+                
+  
