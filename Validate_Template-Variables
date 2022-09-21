@@ -28,7 +28,7 @@ with open (csvfilename, 'r') as (dataInventory):
             print('HCS Data.Data Element: '+ dataelements[1])
             print('Data.FHIR:  '+ dataelements[2])
             print('Data.Domain: '+ dataelements[0]+'\n')
-                
+
                     
 
 

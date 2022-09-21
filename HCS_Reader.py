@@ -9,7 +9,7 @@ dataDomain = 'Claims'
 
 
 #Function to open csv file populate the list arrary
-def csvValidate(filename, dataDomain):
+def csvValidate(filename, fhir_resource):
     with open (csvfilename, 'r') as (dataInventory):
             CombinedData = csv.DictReader(dataInventory)
             dataelements = [] # empty array
@@ -17,8 +17,8 @@ def csvValidate(filename, dataDomain):
             for row in CombinedData:
                 #print(row['Data.Domain'], row['Data.Data Element'])
                 dataelements = (row['Data.Domain'],row['Data.Data Element'],row['Data.FHIR'],row['FHIR Resource Name'])
-                #if value in row['Data.Domain']
-                if dataDomain in row['Data.Domain']:
+                #if value in row['fhir_resource']
+                if fhir_resource in row['FHIR Resource Name']:
                     print(dataelements[1],)# ':',  dataelements[3])
                     
         
@@ -32,7 +32,7 @@ def ValidateTxtfile(Template):
     with open (Template, 'r') as (liquidTemp):
            # TemplateVariables = (liquidTemp)
             for items in liquidTemp:
-                #print (items)
+                print (items)
     #except FileExistsError:
        # print ("Template cannot be found. ")
     #return items

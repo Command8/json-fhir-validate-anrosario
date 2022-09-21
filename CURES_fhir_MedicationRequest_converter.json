@@ -1,0 +1,58 @@
+{
+    "resourceType": "MedicationRequest",
+    "text": {
+        "status": "generated"
+    },
+    "contained": [
+        {
+            "resourceType": "Medication"
+        }
+    ],
+    "status": "active",
+    "intent": "order",
+    "medicationReference": {
+        "reference": "Medication/"
+    },
+    "subject": {
+        "reference": "Patient/",
+        "display": "Minnie Disney Mouse"
+    },
+    "encounter": {
+        "reference": "Encounter/"
+    },
+    "supportingInformation": {
+        "reference": "Resource/"
+    },
+    "authoredOn": "2022-08-01",
+    "requester": {
+        "reference": "Practitioner/"
+    },
+    "performer": {
+        "reference": "Practitioner/"
+    },
+    "recorder": {
+        "reference": "Practitioner/"
+    },
+    "reasonReference": {
+        "reference": "Condition/"
+    },
+    "basedOn": [
+        {
+            "reference": "MedicationRequest/"
+        }
+    ],
+    "insurance": [
+        {
+            "reference": "Coverage/"
+        }
+    ],
+    "priorPrescription": {
+        "reference": "Condition/"
+    },
+    "detectedIssue": {
+        "reference": "Condition/"
+    },
+    "eventHistory": {
+        "reference": "Condition/"
+    }
+}

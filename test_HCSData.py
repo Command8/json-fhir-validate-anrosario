@@ -9,7 +9,7 @@ variables = []
 HCS_Data = csvValidate('HCS_CombinedData.csv', 'Claims')
 #print(HCS_Data)
 
-variables = openTxtfile('Output.txt')
+#variables = openTxtfile('Output.txt')
 #print(variables)
 
 

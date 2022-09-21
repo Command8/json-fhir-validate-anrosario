@@ -1,0 +1,215 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "{{msg.id}}",
+  "text": {
+    "status": "generated",
+    "div": "{{ msg.text.div | escape_special_chars }}"
+  },
+  "contained": [
+    {
+      "resourceType": "Medication",
+      "id": "{{msg.contained.id}}",
+      "code": {
+        "coding": [
+           {% for c in msg.code.coding-%}
+          {
+            "system": "{{c.system}},
+            "code": "{{c.code}}",
+            "display": "{{c.display}}"
+          },
+          {% endfor -%}
+        ]
+      }
+    }
+  ],
+  "identifier": [
+    {
+      "use": "{{msg.identifier.use}}",
+      "system": "{{msg.identifier.system}}",
+      "value": "{{msg.identifier.value}}"
+    }
+  ],
+  "status": "active",
+  "statusReason":{
+        "coding": [
+           {% for c in msg.coding-%}
+              {
+                "system": "http://hl7.org/fhir/ValueSet/medicationrequest-status-reason",
+                "code": "{{c.code}}",
+                "display": "{{c.display}}"
+              },
+          {% endfor -%}
+        ]
+      },
+  "intent": "order",
+  "category":[
+      {
+        "coding": [
+          {% for c in msg.coding-%}
+            {
+              "system": "http://hl7.org/fhir/ValueSet/medicationrequest-category",
+              "code": "{{c.code}}",
+              "display": "{{c.display}}"
+            },
+          {% endfor -%}
+        ]
+      }
+    ],
+  "priority": "{{msg.priority}}",
+  "doNotPerform": "{{msg.doNotPerform}}",
+  "reportedBoolean": "{{msg.reportedBoolean}}",
+  "medicationCodeableConcept": {
+    "coding": [
+      {% for c in msg.coding-%}
+        {
+          "system": "http://hl7.org/fhir/ValueSet/medication-codes",
+          "code": "{{msg.NDC_CODE}}",
+          "display": "{{msg.NDC_DESCRIPTION}}"
+        },
+      {% endfor -%}
+    ]
+  },
+  "medicationReference": {
+    "reference": "Medication/{{msg.medicationReference.reference}}",
+    "display": "{{msg.medicationReference.display}}"
+  },
+  "subject": {
+    "reference": "Patient/{{msg.subject.reference}}",
+    "display": "{{msg.FIRSTNAME}} {{msg.MIDDLENAME}} {{msg.LASTNAME}}"
+  },
+  "encounter": {
+    "reference": "Encounter/{{msg.encounter.reference}}",
+    "display": "{{msg.encounter.display}}"
+  },
+   "supportingInformation": {
+    "reference": "Resource/{{msg.supportingInformation.reference}}",
+    "display": "{{msg.supportingInformation.display}}"
+  },
+  "authoredOn": "{{msg.DATE_OF_SERVICE | date: "yyyy-MM-dd"}}",
+  "requester": {
+    "reference": "Practitioner/{{msg.requester.reference}}",
+    "display": "{{msg.requester.display}}"
+  },
+  "performer": {
+      "reference": "Practitioner/{{msg.performer.reference}}",
+      "display": "{{msg.performer.display}}"
+  },
+  "performerType": {
+    "coding": [
+      {% for c in msg.coding-%}
+        {
+          "system": "http://hl7.org/fhir/ValueSet/performer-role",
+          "code": "{{msg.c.code}}",
+          "display": "{{msg.c.display}}"
+        },
+      {% endfor -%}
+    ]
+  },
+  "recorder": {
+    "reference": "Practitioner/{{msg.recorder.reference}}",
+    "display": "{{msg.recorder.display}}"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {% for c in msg.coding-%}
+          {
+            "system": "http://hl7.org/fhir/ValueSet/condition-code",
+            "code": "{{msg.c.code}}",
+            "display": "{{msg.c.display}}"
+          },
+        {% endfor -%}
+      ]
+    }
+  ],
+  "reasonReference": {
+    "reference": "Condition/{{msg.reasonReference.reference}}",
+    "display": "{{msg.reasonReference.display}}"
+  },
+  "basedOn": [
+    {
+      "reference": "MedicationRequest/{{msg.basedOn.reference}}"
+    }
+  ],
+  "insurance": [
+    {
+      "reference": "Coverage/{{msg.insurance.reference}}"
+    }
+  ],
+  "note": [
+    {
+      "text": "{{msg.note.text}}"
+    }
+  ],
+  "dosageInstruction": [
+    {% for d in msg.dosageInstruction -%}
+      {
+        "sequence": 1,
+        "text": "{{d.text}}",
+        "timing": {
+          "repeat": {
+            {% for r in d.timing.repeat -%}
+            "frequency": {{r.frequency}},
+            "period": {{r.period}},
+            "periodUnit": "{{r.periodUnit}}"
+          },
+          {% endfor -%}
+        },
+        "doseAndRate": [
+          {
+            "type": {
+              "coding": [
+                  {% for c in d.doseAndRate.type.coding -%}
+                {
+                  "system": "{{c.system}}",
+                  "code": "{{c.code}}",
+                  "display": "{{c.display}}"
+                }
+                  {% endfor -%}
+              ]
+            },
+            "doseQuantity": {
+              "value": {{msg.QUANTITY}},
+              "unit": "{{d.doseAndRate.doseQuantity.unit}}",
+              "system": "{{d.doseAndRate.doseQuantity.system}}",
+              "code": "{{d.doseAndRate.doseQuantity.code}}"
+            }
+          }
+        ]
+      },
+    {% endfor -%}
+  ],
+  "dispenseRequest": {
+     {% for dr in msg.dispenseRequest -%}
+      "validityPeriod": {
+        "start": "{{dr.validityPeriod.start | date: "yyyy-MM-dd"}}",
+        "end": "{{dr.validityPeriod.end | date: "yyyy-MM-dd"}}"
+      },
+      "numberOfRepeatsAllowed": {{dr.numberOfRepeatsAllowed}},
+      "quantity": {
+        "value": {{dr.quantity.value}},
+        "unit": "{{dr.quantity.unit}}",
+        "system": "{{dr.quantity.system}}",
+        "code": "{{dr.quantity.code}}"
+      },
+      "expectedSupplyDuration": {
+        "value": {{dr.expectedSupplyDuration.value}},
+        "unit": "{{dr.expectedSupplyDuration.unit}}",
+        "system": "{{dr.expectedSupplyDuration.system}}",
+        "code": "{{dr.expectedSupplyDuration.code}}"
+      }
+    {% endfor -%}
+  },
+  "priorPrescription": {
+    "reference": "Condition/{{msg.priorPrescription.reference}}",
+    "display": "{{msg.priorPrescription.display}}"
+  },
+  "detectedIssue": {
+    "reference": "Condition/{{msg.detectedIssue.reference}}",
+    "display": "{{msg.detectedIssue.display}}"
+  },
+  "eventHistory": {
+    "reference": "Condition/{{msg.eventHistory.reference}}",
+    "display": "{{msg.eventHistory.display}}"
+  },
+}
