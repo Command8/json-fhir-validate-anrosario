@@ -110,64 +110,151 @@ print(medreqdataTransformer['reportedReference'])
 print(medreqdataTransformer['PractitionerRole'])
 
 #MEDICATIONCODEABLECONCEPT
-#pulling key value medicationCodeableConcept from medicationrequest.medicationCodeableConcept fhir resource //R!  Desired processing ugency"
+#pulling key value MEDICATIONCODEABLECONCEPT from medicationrequest.medicationCodeableConcept fhir resource //R!  Desired processing ugency"
 print(medreqdataTransformer['medicationCodeableConcept'])
 
 #MEDICATIONREFERENCE
-#pulling key value medicationReference from medicationrequest.medicationReference fhir resource
+#pulling key value MEDICATIONREFERENCE from medicationrequest.medicationReference fhir resource
 print(medreqdataTransformer['medicationReference'])
 
 
 #SUBJECT
-#pulling key value subject CLAIM_TYPE from medicationrequest.subject value fhir resource
+#pulling key value SUBJECT from medicationrequest.subject value fhir resource
 print(medreqdataTransformer['subject'])
 
-#CARETEAM
-#pulling key value status Provider_ID from medication request careTeam.sequence value fhir resource
-print(medreqdataTransformer['careTeam'][0]['sequence'])
-# pulling key value status Provider_ID from medication request careTeam.provider.reference value fhir resource
-print(medreqdataTransformer['careTeam'][0]['provider'])  
+#ENCOUNTER
+#pulling key value ENCOUNTER from medicationrequest.encounter value fhir resource
+print(medreqdataTransformer['encounter'])
 
-#DIAGNOSIS
-# pulling key value  from medication request diagnosis.sequence fhir resource
-print(medreqdataTransformer['diagnosis'][0]['sequence'])
-# pulling key DX_1 value from medication request diagnosis.sequence.diagnosisCodeableConcept.coding.code fhir resource
-print(medreqdataTransformer['diagnosis'][0]['diagnosisCodeableConcept']['coding'][0]['code'])
+#SUPPORTINGINFORMATION
+# pulling key value SUPPORTINGINFORMATION from medication request.supportingInformation value fhir resource
+print(medreqdataTransformer['supportingInformation'])  
 
-# pulling key DX_2 value from medication request diagnosis.diagnosisCodeableConcept.coding.code fhir resource
-print(medreqdataTransformer['diagnosis'][1]['diagnosisCodeableConcept']['coding'][0]['code'])
+#AUTHOREDON
+# pulling key value AUTHOREDON from medicationrequest.authoredOn fhir resource
+print(medreqdataTransformer['authoredOn'])
 
-# pulling key DX_3 value from medication request diagnosis.diagnosisCodeableConcept.coding.code fhir resource
-print(medreqdataTransformer['diagnosis'][2]['diagnosisCodeableConcept']['coding'][0]['code'])
+#REQUESTER
+# pulling key REQUESTER value from medication request.requester fhir resource
+print(medreqdataTransformer['requester'])
 
-#PROCEDURE
-#pulling key value  "1"   from medication request procedure.sequence fhir resource
-print(medreqdataTransformer['procedure'][0]['sequence']) 
-#pulling key value  "primary" from medication request procedure.type.coding.code fhir resource
-print(medreqdataTransformer['procedure'][0]['type'][0]['coding'][0]['code'])
-#pulling key value ServiceFromDate from medication request.prodecure.date fhir resource
+#PERFORMER
+#pulling key PERFORMER value from medication request.performer fhir resource
+print(medreqdataTransformer['performer'])
 
-print(medreqdataTransformer['procedure'][0]['date'])
-#pulling key value CPTCode_Primary from medication request fhir resource
-print(medreqdataTransformer['procedure'][0]['procedureCodeableConcept']['coding'][0]['code'])
+#PRACTITIONERROLE
+#pulling key PRACTITIONERROLE value from medication request.PractitionerRole fhir resource
+print(medreqdataTransformer['PractitionerRole'])
 
-# pulling key value "2" from medication request procedure.sequence fhir resource
-print(medreqdataTransformer['procedure'][1]['sequence']) 
-#pulling key value ProcedureCode2 from medication request fhir resource
-#pulling key value  "secondary" from medication request procedure.type.coding.code fhir resource
-print(medreqdataTransformer['procedure'][1]['procedureCodeableConcept']['coding'][0]['code'])
-#pulling key value ServiceFromDate from medication request.prodecure.date fhir resource
-#print(medreqdataTransformer['procedure'][1]['date'])
+#PERFORMERTYPE
+#pulling key PERFORMERTYPE value from medicationrequest.performerType fhir resource
+print(medreqdataTransformer['performerType']) 
+
+#RECORDER
+#pulling key RECORDER value from medicationrequest.recorder fhir resource
+print(medreqdataTransformer['recorder'])
+
+#REASONCODE
+#pulling key REASONCODE value from medicationrequest.reasonCode fhir resource
+print(medreqdataTransformer['reasonCode'])
+
+#REASONREFERENCE
+#pulling key REASONREFERENCE value from medicationrequest.reasonReference fhir resource
+print(medreqdataTransformer['reasonReference'])
+
+#INSTANTIATESCANONICAL
+# pulling key INSTANTIATESCANONICAL value from medication request.instantiatesCanonical fhir resource
+print(medreqdataTransformer['instantiatesCanonical']) 
+
+#INSTANTIATESURI
+#pulling key INSTANTIATESURI value from medication request.instantiatesUri fhir resource
+print(medreqdataTransformer['instantiatesUri'])
+
+#BASEDON
+#pulling key BASEDON value from medicationrequest.basedOn fhir resource
+print(medreqdataTransformer['basedOn'])
+
+#GROUPIDENTIFIER
+#pulling key GROUPIDENTIFIER value from medicationrequest.groupIdentifier fhir resource
+print(medreqdataTransformer['groupIdentifier'])
+
+#COURSEOFTHERAPYTYPE
+#pulling key COURSEOFTHERAPYTYPE value from medication request.courseOfTherapyType fhir resource
+print(medreqdataTransformer['courseOfTherapyType'])
 
 #INSURANCE
-# pulling key value "1" from medication request insurance.sequence fhir resource
-print(medreqdataTransformer['insurance'][0]['sequence'])
-# pulling key value "true" from medication request insurance.focal fhir resource
-print(medreqdataTransformer['insurance'][0]['focal'])
-# pulling key value  from medication request insurance.coverage.reference fhir resource
-print(medreqdataTransformer['insurance'][0]['coverage']['reference']) 
+#pulling key INSURANCE value from medication request.insurance fhir resource
+print(medreqdataTransformer['insurance']) 
 
-#TOTAL
-#pulling key vaalue BillAmount from medication requests total.value fhir resource
-print(medreqdataTransformer['total']['value'])
+#NOTE
+#pulling key NOTE value  from medicationrequests.note fhir resource
+print(medreqdataTransformer['note'])
+
+#DOSAGEINSTRUCTION
+#pulling key DOSAGEINSTRUCTION value from medicationrequests.dosageInstruction fhir resource
+print(medreqdataTransformer['dosageInstruction'])
+
+#DISPENSEREQUEST
+#pulling key value DISPENSEREQUEST from medication requests.dispenseRequest fhir resource
+print(medreqdataTransformer['dispenseRequest'])
+
+#DISPENSEREQUEST.INITIALFILL
+#pulling key INITIALFILL value  from medication requests.dispenseRequest.initialFill fhir resource
+print(medreqdataTransformer['dispenseRequest']['initialFill'])
+
+#DISPENSEREQUEST.INITIALFILL.QUANTITY
+#pulling key QUANTITY value  from medication requests.dispenseRequest.initialFill.quantity fhir resource
+print(medreqdataTransformer['dispenseRequest']['initialFill']['quantity'])
+
+#DISPENSEREQUEST.INITIALFILL.DURATION
+#pulling key DURATION value  from medication requests.dispenseRequest.initialFill.duration fhir resource
+print(medreqdataTransformer['dispenseRequest']['initialFill']['duration'])
+
+#DISPENSEREQUEST.DISPENSEINTERVAL
+#pulling key dispenseInterval value  from medication requests.dispenseRequest.dispenseInterval fhir resource
+print(medreqdataTransformer['dispenseRequest']['dispenseInterval'])
+
+#DISPENSEREQUEST.VALIDITYPERIOD
+#pulling key VALIDITYPERIOD value  from medication requests.dispenseRequest.validityPeriod fhir resource
+print(medreqdataTransformer['dispenseRequest']['validityPeriod'])
+
+#DISPENSEREQUEST.NUMBEROFREPEATSALLOWED
+#pulling key NUMBEROFREPEATSALLOWED value  from medication requests.dispenseRequest.numberOfRepeatsAllowed fhir resource
+print(medreqdataTransformer['dispenseRequest']['numberOfRepeatsAllowed'])
+
+#DISPENSEREQUEST.QUANTITY
+#pulling key QUANTITY value  from medication requests.dispenseRequest.quantity fhir resource
+print(medreqdataTransformer['dispenseRequest']['quantity'])
+
+#DISPENSEREQUEST.EXPECTEDSUPPLYDURATION
+#pulling key EXPECTEDSUPPLYDURATION value  from medication requests.dispenseRequest.expectedSupplyDuration fhir resource
+print(medreqdataTransformer['dispenseRequest']['expectedSupplyDuration'])
+
+#DISPENSEREQUEST.PERFORMER
+#pulling key PERFORMER value  from medication requests.dispenseRequest.performer fhir resource
+print(medreqdataTransformer['dispenseRequest']['performer'])
+
+#SUBSTITUTION.ALLOWEDBOOLEANALLOWEDBOOLEAN
+#pulling key ALLOWEDBOOLEAN value  from medicationrequests.substitution.allowedBoolean fhir resource
+print(medreqdataTransformer['substitution']['allowedBoolean'])
+
+#SUBSTITUTION.ALLOWEDCODEABLECONCEPT
+#pulling key ALLOWEDCODEABLECONCEPT value  from medicationrequests.substitution.allowedCodeableConcept fhir resource
+print(medreqdataTransformer['substitution']['allowedCodeableConcept'])
+
+#SUBSTITUTION.REASON
+#pulling key REASON value  from medicationrequests.substitution.reason fhir resource
+print(medreqdataTransformer['substitution']['reason'])
+
+#PRIORPRESCRIPTION
+#pulling key PRIORPRESCRIPTION value from medicationrequests.priorPrescription fhir resource
+print(medreqdataTransformer['priorPrescription'])
+
+#DETECTEDISSUE
+#pulling key DETECTEDISSUE value from medicationrequests.detectedIssue fhir resource
+print(medreqdataTransformer['detectedIssue'])
+
+#EVENTHISTORY
+#pulling key EVENTHISTORY value  from medicationrequests.eventHistory fhir resource
+print(medreqdataTransformer['eventHistory'])
 
