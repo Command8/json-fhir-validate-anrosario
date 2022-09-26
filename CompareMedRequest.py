@@ -31,20 +31,15 @@ MedRequestDataInput = getResourceFile(fileinput)
 
 
 #Traversing through json to identify the key values for validation    
-print(MedRequestDataInput['CLAIM_NUMBER']) 
-print(MedRequestDataInput['MEMBER_NUMBER'])
+
 print(MedRequestDataInput['NDC_CODE'])
 print(MedRequestDataInput['NDC_DESCRIPTION'])
-print(MedRequestDataInput['HICN']) 
-print(MedRequestDataInput['CLIENTNAME']) 
-print(MedRequestDataInput['CLIENTID'])
+
 print(MedRequestDataInput['DATE_OF_SERVICE']) 
 print(MedRequestDataInput['QUANTITY'])
-print(MedRequestDataInput['PAID_AMT'])
+
 print(MedRequestDataInput['CENSEOID'])
-print(MedRequestDataInput['FIRSTNAME'])
-print(MedRequestDataInput['MIDDLENAME'])
-print(MedRequestDataInput['LASTNAME'])
+
 
         
 print("////////////////////////////MEDREQUEST Transformed JSON Data///////////////////////////////////////////")
@@ -110,8 +105,11 @@ print(medreqdataTransformer['reportedReference'])
 print(medreqdataTransformer['PractitionerRole'])
 
 #MEDICATIONCODEABLECONCEPT
-#pulling key value MEDICATIONCODEABLECONCEPT from medicationrequest.medicationCodeableConcept fhir resource //R!  Desired processing ugency"
-print(medreqdataTransformer['medicationCodeableConcept'])
+#pulling key value NDC_CODE from medicationrequest.medicationCodeableConcept fhir resource //R!  Desired processing ugency"
+print(medreqdataTransformer['medicationCodeableConcept'][0]['code']['coding']['code'])
+
+#pulling key value NDC_DESCRIPTION from medicationrequest.medicationCodeableConcept fhir resource //R!  Desired processing ugency"
+print(medreqdataTransformer['medicationCodeableConcept'][0]['code']['coding']['display'])
 
 #MEDICATIONREFERENCE
 #pulling key value MEDICATIONREFERENCE from medicationrequest.medicationReference fhir resource
@@ -131,7 +129,7 @@ print(medreqdataTransformer['encounter'])
 print(medreqdataTransformer['supportingInformation'])  
 
 #AUTHOREDON
-# pulling key value AUTHOREDON from medicationrequest.authoredOn fhir resource
+# pulling key value DATE_OF_SERVICE from medicationrequest.authoredOn fhir resource
 print(medreqdataTransformer['authoredOn'])
 
 #REQUESTER
@@ -191,8 +189,79 @@ print(medreqdataTransformer['insurance'])
 print(medreqdataTransformer['note'])
 
 #DOSAGEINSTRUCTION
-#pulling key DOSAGEINSTRUCTION value from medicationrequests.dosageInstruction fhir resource
-print(medreqdataTransformer['dosageInstruction'])
+
+#pulling key SEQUENCE value from medicationrequests.dosageInstruction.sequence fhir resource
+print(medreqdataTransformer['dosageInstruction'][0]['sequence'])
+#pulling key text value from medicationrequests.dosageInstruction.text fhir resource
+print(medreqdataTransformer['dosageInstruction'][0]['text'])
+
+#pulling key frequency value from medicationrequests.dosageInstruction.timing.repeat.frequency fhir resource
+print(medreqdataTransformer['dosageInstruction'][0]['timing']['repeat']['frequency'])
+#pulling key period value from medicationrequests.dosageInstruction.timing.repeat.period fhir resource
+print(medreqdataTransformer['dosageInstruction'][0]['timing']['repeat']['period'])
+#pulling key periodUnit value from medicationrequests.dosageInstruction.timing.repeat.periodUnit fhir resource
+print(medreqdataTransformer['dosageInstruction'][0]['timing']['repeat']['periodUnit'])
+
+#pulling key system value from medicationrequests.dosageInstruction.doseAndRate.type.coding.system fhir resource
+print(medreqdataTransformer['dosageInstruction'][0]['doseAndRate']['type']['coding']['system'])
+#pulling key code value from medicationrequests.dosageInstruction fhir resource
+print(medreqdataTransformer['dosageInstruction'][0]['doseAndRate']['type']['coding']['code'])
+#pulling key display value from medicationrequests.dosageInstruction fhir resource
+print(medreqdataTransformer['dosageInstruction'][0]['doseAndRate']['type']['coding']['display'])
+
+#pulling key value value from medicationrequests.dosageInstruction.doseQuantity.value fhir resource
+print(medreqdataTransformer['dosageInstruction'][0]['doseQuantity']['value'])
+#pulling key unit value from medicationrequests.dosageInstruction.doseQuantity.unit fhir resource
+print(medreqdataTransformer['dosageInstruction'][0]['doseQuantity']['unit'])
+#pulling key system value from medicationrequests.dosageInstruction.doseQuantity.system fhir resource
+print(medreqdataTransformer['dosageInstruction'][0]['doseQuantity']['system'])
+
+#pulling key quantity value from medicationrequests.dispenseRequest.doseQuantity.value fhir resource
+print(medreqdataTransformer['dispenseRequest'][0]['initialFill']['quantity'])
+#pulling key duration value from medicationrequests.dispenseRequest.doseQuantity.unit fhir resource
+print(medreqdataTransformer['dispenseRequest'][0]['initialFill']['duration'])
+
+#pulling key start value from medicationrequests.dispenseRequest.dispenseInterval.validityPeriod.start fhir resource
+print(medreqdataTransformer['dispenseRequest'][0]['dispenseInterval']['validityPeriod']['start'])
+#pulling key end value from medicationrequests.dispenseRequest.dispenseInterval.code.validityPeriod.end fhir resource
+print(medreqdataTransformer['dispenseRequest'][0]['dispenseInterval']['validityPeriod']['end'])
+
+#pulling key value value from medicationrequests.dispenseRequest.numberOfRepeatsAllowed.validityPeriod.value fhir resource
+print(medreqdataTransformer['dispenseRequest'][0]['numberOfRepeatsAllowed']['quantity']['value'])
+#pulling key unit value from medicationrequests.dispenseRequest.numberOfRepeatsAllowed.code.validityPeriod.unit fhir resource
+print(medreqdataTransformer['dispenseRequest'][0]['numberOfRepeatsAllowed']['quantity']['unit'])
+#pulling key system value from medicationrequests.dispenseRequest.numberOfRepeatsAllowed.validityPeriod.system fhir resource
+print(medreqdataTransformer['dispenseRequest'][0]['numberOfRepeatsAllowed']['quantity']['system'])
+#pulling key code value from medicationrequests.dispenseRequest.numberOfRepeatsAllowed.code.validityPeriod.code fhir resource
+print(medreqdataTransformer['dispenseRequest'][0]['numberOfRepeatsAllowed']['quantity']['code'])
+
+#pulling key value value from medicationrequests.dispenseRequest.expectedSupplyDuration.validityPeriod.value fhir resource
+print(medreqdataTransformer['dispenseRequest'][0]['expectedSupplyDuration']['quantity']['value'])
+#pulling key unit value from medicationrequests.dispenseRequest.expectedSupplyDuration.code.validityPeriod.unit fhir resource
+print(medreqdataTransformer['dispenseRequest'][0]['expectedSupplyDuration']['quantity']['unit'])
+#pulling key system value from medicationrequests.dispenseRequest.expectedSupplyDuration.validityPeriod.system fhir resource
+print(medreqdataTransformer['dispenseRequest'][0]['expectedSupplyDuration']['quantity']['system'])
+#pulling key code value from medicationrequests.dispenseRequest.expectedSupplyDuration.code.validityPeriod.code fhir resource
+print(medreqdataTransformer['dispenseRequest'][0]['expectedSupplyDuration']['quantity']['code'])
+
+#pulling key value value from medicationrequests.substitution.allowedBoolean.validityPeriod.value fhir resource
+print(medreqdataTransformer['substitution'][0]['substitution']['allowedBoolean']['value'])
+
+#pulling key system value from medicationrequests.substitution.allowedCodeableConcept.coding.system fhir resource
+print(medreqdataTransformer['substitution'][0]['allowedCodeableConcept']['coding']['system'])
+#pulling key code value from medicationrequests.substitution.allowedCodeableConcept.coding.code fhir resource
+print(medreqdataTransformer['substitution'][0]['allowedCodeableConcept']['coding']['code'])
+#pulling key display value from medicationrequests.substitution.allowedCodeableConcept.coding.display fhir resource
+print(medreqdataTransformer['substitution'][0]['allowedCodeableConcept']['coding']['display'])
+
+#pulling key system value from medicationrequests.reason.allowedCodeableConcept.coding.system fhir resource
+print(medreqdataTransformer['reason'][0]['coding']['system'])
+#pulling key code value from medicationrequests.reason.allowedCodeableConcept.coding.code fhir resource
+print(medreqdataTransformer['reason'][0]['coding']['code'])
+#pulling key display value from medicationrequests.reason.allowedCodeableConcept.coding.display fhir resource
+print(medreqdataTransformer['reason'][0]['coding']['display'])
+
+
 
 #DISPENSEREQUEST
 #pulling key value DISPENSEREQUEST from medication requests.dispenseRequest fhir resource
