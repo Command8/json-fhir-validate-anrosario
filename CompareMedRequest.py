@@ -47,7 +47,7 @@ print("////////////////////////////MEDREQUEST Transformed JSON Data/////////////
 
 #Loading the absolute path to be passed into function
 #Access parent directory and create path to load json input file into function
-medreqfileoutput = ('CURES_fhir_MedicationRequest_converter.json')
+medreqfileoutput = ('MedicationRequest_converter.json')
 #Another way to access parent directory to reference files into function
 #fileoutput = pathlib.Path(__file__).parent/'Transformedclmsac.json'
 #Loading transformed JSON using function
@@ -74,11 +74,11 @@ print(medreqdataTransformer['status'])
 
 #STATUS REASON  
 #pulling key value STATUSREASON medicationrequest.statusreason fhir resource
-print(medreqdataTransformer['statusReason'])
+#print(medreqdataTransformer['statusReason'])
 
 #CATAGORY
 #pulling key value CATAGORY medicationrequest.catagory fhir resource
-print(medreqdataTransformer['category'][0]['coding'][0]['system'])
+#print(medreqdataTransformer['category'][0]['coding'][0]['system'])
 #pulling key value CATAGORY medicationrequest.catagory fhir resource
 #print(medreqdataTransformer['category'][0]['coding'][0]['code'])
 #pulling key value CATAGORY medicationrequest.catagory fhir resource
@@ -147,7 +147,7 @@ print(medreqdataTransformer['performer'])
 
 #PERFORMERTYPE
 #pulling key PERFORMERTYPE value from medicationrequest.performerType fhir resource
-print(medreqdataTransformer['performerType']) 
+#print(medreqdataTransformer['performerType']) 
 
 #RECORDER
 #pulling key RECORDER value from medicationrequest.recorder fhir resource
@@ -155,7 +155,7 @@ print(medreqdataTransformer['recorder'])
 
 #REASONCODE
 #pulling key REASONCODE value from medicationrequest.reasonCode fhir resource
-print(medreqdataTransformer['reasonCode'])
+#print(medreqdataTransformer['reasonCode'])
 
 #REASONREFERENCE
 #pulling key REASONREFERENCE value from medicationrequest.reasonReference fhir resource
@@ -179,7 +179,7 @@ print(medreqdataTransformer['basedOn'])
 
 #COURSEOFTHERAPYTYPE
 #pulling key COURSEOFTHERAPYTYPE value from medication request.courseOfTherapyType fhir resource
-print(medreqdataTransformer['courseOfTherapyType'])
+#print(medreqdataTransformer['courseOfTherapyType'])
 
 #INSURANCE
 #pulling key INSURANCE value from medication request.insurance fhir resource
@@ -249,14 +249,14 @@ print(medreqdataTransformer['dosageInstruction'][0]['doseAndRate'][0]['doseQuant
 #print(medreqdataTransformer['substitution'][0]['allowedBoolean']['value'])
 
 #pulling key system value from medicationrequests.substitution.allowedCodeableConcept.coding.system fhir resource
-print(medreqdataTransformer['substitution']['allowedCodeableConcept']['coding'][0]['system'])
+#print(medreqdataTransformer['substitution']['allowedCodeableConcept']['coding'][0]['system'])
 #pulling key code value from medicationrequests.substitution.allowedCodeableConcept.coding.code fhir resource
 #print(medreqdataTransformer['substitution'][0]['allowedCodeableConcept']['coding'][0]['code'])
 #pulling key display value from medicationrequests.substitution.allowedCodeableConcept.coding.display fhir resource
 #print(medreqdataTransformer['substitution'][0]['allowedCodeableConcept']['coding'][0]['display'])
 
 #pulling key system value from medicationrequests.reason.allowedCodeableConcept.coding.system fhir resource
-print(medreqdataTransformer['substitution']['reason']['coding'][0]['system'])
+#print(medreqdataTransformer['substitution']['reason']['coding'][0]['system'])
 #pulling key code value from medicationrequests.reason.allowedCodeableConcept.coding.code fhir resource
 #print(medreqdataTransformer['substitution']['reason']['coding'][0]['code'])
 #pulling key display value from medicationrequests.reason.allowedCodeableConcept.coding.display fhir resource
