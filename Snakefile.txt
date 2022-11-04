@@ -1,0 +1,32 @@
+#sparkTutorial.py
+import pyspark
+import pandas as pd
+
+from pyspark.sql import SparkSession
+
+import sys
+sys.path.append(".")
+#from Functions.fhir_functions import getResourceFile
+
+#Using os, Import filepath of directory that file resides in
+import os
+dir_path = os.path.dirname((__file__))
+
+#Loading the absolute path to be passed into function
+#Access parent directory and create path to load snowflake input file into function
+pfileinput =  (dir_path + '/' +'HCS_CombinedData.csv')
+pfileinput2 = (dir_path + '/' +'HCS_CombinedData2.csv')
+
+pd.read_csv(pfileinput)
+
+spark = SparkSession.builder.appName('Pratice').getOrCreate()
+
+#df_pyspark = spark.read.csv(pfileinput2)
+#df_pyspark.show()
+
+#spark.read.option('header', 'true').csv(pfileinput).show()
+#df_pyspark = spark.read.option('header', 'true').csv(pfileinput2).show()
+
+#print(type(df_pyspark))
+
+#df_pyspark.head(10)

@@ -19,12 +19,12 @@ from Functions.fhir_functions import getResourceType , fileName , fhirResource, 
 #Would like to make the script generate it's own token before runtime. 
 
 getResourceType ('CreatePatientResource.json', 'Patient')
-
+patientid = 'ABCD00012'
 fhirResourceType = getResourceType ('CreatePatientResource.json', 'Patient')
 get_metadata_endpoint = 'metadata'
-get_patient_endpoint = fhirResourceType +'/', patientid
-get_patient_endpoint = fhirResourceType+'/', patientid
-print('end point is: '+ fhirResourceType)
+#get_patient_endpoint = fhirResourceType +'/', patientid
+#get_patient_endpoint = fhirResourceType+'/', patientid
+#print('end point is: '+ fhirResourceType)
 #post_patient_endpoint = fhirResource 
 
 
@@ -45,7 +45,9 @@ headers = {'Authorization': 'Bearer {}' .format(secret.auth_token),'User-Agent':
 
 #get request for Patient using the Patient id number in the url
 
-response_get = requests.get('https://sbx-usc-fhir-api.azurehealthcareapis.com/Patient/'+ patientid, headers=headers)
+#response_get = requests.get('https://sbx-usc-fhir-api.azurehealthcareapis.com/Patient?identifier='+ patientid, headers=headers)
+
+response_get = requests.get('https://sbx-usc-fhir-api.azurehealthcareapis.com/Patient?identifier=ABCD00012', headers=headers)
 
 
 #response_get = requests.get('https://sbx-usc-fhir-api.azurehealthcareapis.com/metadata')#, headers=headers) #, 'Auth URL:', auth_url, 'Access Token URL:', str(authtoken_url), 'Client ID:' , client_id})
@@ -59,7 +61,14 @@ response_get = requests.get('https://sbx-usc-fhir-api.azurehealthcareapis.com/Pa
 #print(response_get.request.headers)
 #***********************************************************************************************
 load_get = json.loads(response_get.text)
-print(load_get['name'][0]['family'])
-print (load_get['id'])
-print(response_get.status_code)
+print(load_get)
+#print(load_get['name'][0]['family'][0])
+resource = load_get['entry'][0]['resource']['resourceType']
+print(resource)
+patientfhirid = load_get['entry'][0]['resource']['id']
+print(patientfhirid)
+primaryBundleId = load_get['id']
+print(primaryBundleId)
+responseCode = response_get.status_code
+print(responseCode)
 

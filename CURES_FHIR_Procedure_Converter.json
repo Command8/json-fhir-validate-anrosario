@@ -1,0 +1,251 @@
+{
+    "resourceType": "Procedure",
+    "identifier": [
+        {
+            "use": "official",
+            "value": "G123456",
+            "assigner": {
+                "display": "Signify Health CenseoID"
+            }
+        },
+        {
+            "use": "usual",
+            "value": "123456",
+            "assigner": {
+                "display": "Member Number"
+            }
+        },
+        {
+            "use": "usual",
+            "value": 123456,
+            "assigner": {
+                "display": "Medicare Identification Number"
+            }
+        }
+    ],
+    "instantiatesCanonical": [
+        "http://hl7.org/fhir/StructureDefinition/Questionnaire"
+    ],
+    "basedOn": [
+        {
+            "reference": "CarePlan/"
+        },
+        {
+            "reference": "ServiceRequest/"
+        }
+    ],
+    "partOf": [
+        {
+            "reference": "Observation/"
+        },
+        {
+            "reference": "Procedure/"
+        }
+    ],
+    "status": "unknown",
+    "statusReason": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct"
+            }
+        ]
+    },
+    "category": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct"
+            }
+        ]
+    },
+    "code": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "*"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "code": "*"
+            }
+        ]
+    },
+    "subject": {
+        "reference": "Patient/"
+    },
+    "encounter": {
+        "reference": "Encounter/"
+    },
+    "performedPeriod": {
+        "start": "2018-10-02"
+    },
+    "recorder": {
+        "reference": "Practitioner/"
+    },
+    "asserter": {
+        "reference": "Practitioner/"
+    },
+    "performer": [
+        {
+            "function": {
+                "coding": [
+                    {
+                        "system": "http://snomed.info/sct",
+                        "code": "*",
+                        "display": "*"
+                    }
+                ]
+            },
+            "actor": {
+                "reference": "Practitioner/"
+            },
+            "onBehalfOf": {
+                "reference": "Organization/"
+            }
+        }
+    ],
+    "location": {
+        "reference": "Location/"
+    },
+    "reasonCode": [
+        {
+            "coding": [
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "M54.9"
+                },
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "M54.9"
+                },
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "R06.02"
+                },
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "R06.02"
+                },
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "L03.311"
+                },
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "L03.311"
+                },
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "R65.20"
+                },
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "R65.20"
+                },
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "S22.32XA"
+                },
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "S22.32XA"
+                },
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "J86.9"
+                },
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "J86.9"
+                }
+            ]
+        }
+    ],
+    "bodySite": [
+        {
+            "coding": [
+                {
+                    "system": "http://snomed.info/sct"
+                }
+            ]
+        }
+    ],
+    "outcome": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct"
+            }
+        ]
+    },
+    "report": [
+        {
+            "reference": "Composition/"
+        },
+        {
+            "reference": "DiagnosticReport/"
+        },
+        {
+            "reference": "DocumentReference/"
+        }
+    ],
+    "complication": [
+        {
+            "coding": [
+                {
+                    "system": "http://snomed.info/sct"
+                }
+            ]
+        }
+    ],
+    "complicationDetail": [
+        {
+            "reference": "Condition/"
+        }
+    ],
+    "followUp": [
+        {
+            "coding": [
+                {
+                    "system": "http://snomed.info/sct"
+                }
+            ]
+        }
+    ],
+    "note": [
+        {
+            "authorReference": {
+                "reference": "Practitioner/"
+            }
+        }
+    ],
+    "focalDevice": [
+        {
+            "action": {
+                "coding": [
+                    {
+                        "system": "http://snomed.info/sct"
+                    }
+                ]
+            },
+            "manipulated": {
+                "reference": "Device/"
+            }
+        }
+    ],
+    "usedReference": [
+        {
+            "reference": "Device/"
+        },
+        {
+            "reference": "Medication/"
+        }
+    ],
+    "usedCode": [
+        {
+            "coding": [
+                {
+                    "system": "http://snomed.info/sct"
+                }
+            ]
+        }
+    ]
+}
